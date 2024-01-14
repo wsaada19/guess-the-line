@@ -47,7 +47,7 @@ export const Matchup = ({ home, away, points, submitGuess }) => {
       className={`grid grid-cols-8 w-96 ${border} shadow-lg my-4 bg-blue-100 rounded`}
     >
       <div
-        className={`my-1 py-2 px-4 ${complete ? 'col-span-8' : 'col-span-7'}`}
+        className={`my-1 py-2 pl-4 ${complete ? 'col-span-8' : 'col-span-7'}`}
       >
         <Team
           name={`${home.city} ${home.name}`}
@@ -93,7 +93,7 @@ export const Matchup = ({ home, away, points, submitGuess }) => {
       {!complete && (
         <button
           onClick={submitLine}
-          className='col-span-2 p-1 m-1 bg-orange-500 text-white rounded-sm'
+          className='col-span-2 p-1 mr-3 mb-3 bg-orange-500 text-white rounded-sm'
         >
           Submit
         </button>
@@ -117,12 +117,12 @@ const Team = ({ name, logo, line, result, isComplete, isHome = false }) => {
         />
         {name}
         {!isComplete ? (
-          <span className='w-10 px-1 my-1 bg-orange-500 float-right text-right text-white rounded-sm'>
+          <span className='w-11 px-1 my-1 bg-orange-500 float-right text-right text-white rounded-sm'>
             {isHome ? line * -1 : line}
           </span>
         ) : (
           <span
-            className={`w-10 px-1 my-1 ${
+            className={`w-11 px-1 my-1 mr-3 ${
               difference > 0 ? 'bg-green-500' : 'bg-red-500'
             } float-right text-right text-white rounded-sm`}
           >

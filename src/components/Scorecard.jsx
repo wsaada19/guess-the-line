@@ -1,13 +1,9 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/A1oqi2xvApF
- */
 'use client'
 import { Badge } from '@/components/ui/badge'
 
 export default function Scorecard({ remainingGuesses, score }) {
   return (
-    <div className={`mb-2 flex items-center justify-between gap-2 text-white`}>
+    <div className='pl-2 flex items-center justify-between gap-2 text-white'>
       <Badge className='items-center text-base border-none' variant='outline'>
         <PuzzleIcon className='h-4.5 w-4.5 -translate-x-1' />
         {remainingGuesses} Remaining Guesses

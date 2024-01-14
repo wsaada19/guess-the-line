@@ -2,7 +2,7 @@ export default function PointsBanner({ points, opacity }) {
   const earnedPoints = points > 0
   return (
     <div
-      className={`absolute inset-x-0 bottom-0 m-10 flex items-center justify-center ${
+      className={`fixed inset-x-0 bottom-5 md:mx-28 p-4 flex items-center justify-center ${
         earnedPoints ? 'bg-orange-500' : 'bg-red-500'
       } text-white text-sm font-bold px-4 py-3 transition-opacity duration-500 ease-in-out rounded-md`}
       style={{ opacity: opacity }}
@@ -11,8 +11,8 @@ export default function PointsBanner({ points, opacity }) {
       {earnedPoints && <TrophyIcon className='w-4 h-4 mr-2' />}
       <p className='text-lg font-semibold'>
         {earnedPoints
-          ? `Great guess! You earned ${points} points from your guess.`
-          : `Sorry, you didn't earn any points from your guess.`}
+          ? `Great guess! You earned ${points} points.`
+          : `Not even close! You didn't earn any points from your guess.`}
       </p>
     </div>
   )

@@ -1,3 +1,4 @@
+const REVALIDATE = 60 * 30 // 30 minutes
 export const getLatestGames = async () => {
   try {
     const apiKey = process.env.ODDS_API_KEY
@@ -7,13 +8,13 @@ export const getLatestGames = async () => {
     const oddsFormat = 'decimal' // decimal | american
     const dateFormat = 'iso' // iso | unix
     const startTime = getISO8601DateTimeInEST(0)
-    console.log(startTime)
     const endTime = getISO8601DateTimeInEST(23)
     const url = `https://api.the-odds-api.com/v4/sports/${sportKey}/odds?apiKey=${apiKey}&regions=${regions}&markets=${markets}&oddsFormat=${oddsFormat}&dateFormat=${dateFormat}&commenceTimeFrom=${startTime}&commenceTimeTo=${endTime}`
-    console.log(url)
-    const result = await fetch(url)
+    const result = await fetch(url, {
+      cache: 'force-cache',
+      revalidate: REVALIDATE
+    })
     const json = await result.json()
-    console.log(json.length)
     // console.log('Remaining requests', json.headers['x-requests-remaining'])
     return json
   } catch (err) {
