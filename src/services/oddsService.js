@@ -8,7 +8,7 @@ export const getLatestGames = async () => {
     const oddsFormat = 'decimal' // decimal | american
     const dateFormat = 'iso' // iso | unix
     const startTime = getISO8601DateTimeInEST(0)
-    const endTime = getISO8601DateTimeInEST(23)
+    const endTime = getISO8601DateTimeInEST(6, 1)
     const url = `https://api.the-odds-api.com/v4/sports/${sportKey}/odds?apiKey=${apiKey}&regions=${regions}&markets=${markets}&oddsFormat=${oddsFormat}&dateFormat=${dateFormat}&commenceTimeFrom=${startTime}&commenceTimeTo=${endTime}`
     const result = await fetch(url, {
       cache: 'force-cache',
@@ -22,12 +22,12 @@ export const getLatestGames = async () => {
   }
 }
 
-function getISO8601DateTimeInEST(hour) {
+function getISO8601DateTimeInEST(hour, day = 0) {
   const currentDate = new Date()
 
   // Set the time to the specified hour
   currentDate.setHours(hour, 0, 0, 0)
-  currentDate.setDate(currentDate.getDate())
+  currentDate.setDate(currentDate.getDate() + day)
   currentDate.setSeconds(0, 0)
   currentDate.setMilliseconds(0)
 
