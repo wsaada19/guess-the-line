@@ -7,7 +7,7 @@ export default async function Home() {
   const data = await getLatestGames()
   const matches = getLatestGamesData(data)
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-10'>
+    <main className='flex min-h-screen flex-col items-center justify-between py-6 md:px-10'>
       <div>
         <h1 className='text-3xl font-bold text-left mb-1 pl-1'>
           Guess the Lines
