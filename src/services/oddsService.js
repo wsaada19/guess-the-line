@@ -26,14 +26,13 @@ function getISO8601DateTimeInEST(hour) {
   const currentDate = new Date()
 
   // Set the time to the specified hour
-  const options = { timeZone: 'America/New_York' }
   currentDate.setHours(hour, 0, 0, 0)
   currentDate.setDate(currentDate.getDate())
   currentDate.setSeconds(0, 0)
   currentDate.setMilliseconds(0)
 
   // Format the date to ISO 8601
-  const estDate = new Date(currentDate.toLocaleString('en-US', options))
-  const iso8601DateTime = estDate.toISOString().split('.')[0] + 'Z'
+  const iso8601DateTime = currentDate.toISOString().split('.')[0] + 'Z'
+  console.log(iso8601DateTime)
   return iso8601DateTime
 }
