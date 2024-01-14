@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { getScoreFromGuess } from '@/services/gameLogic'
 
-export const Matchup = ({ home, away, points, submitGuess }) => {
+export const Matchup = ({ home, away, points, id, submitGuess }) => {
   const [line, setLine] = useState(0.0)
   const [lineDescription, setLineDescription] = useState('Even')
   const [complete, setComplete] = useState(false)
@@ -21,7 +21,7 @@ export const Matchup = ({ home, away, points, submitGuess }) => {
   const submitLine = () => {
     setComplete(true)
     updateLineDescription(points)
-    submitGuess(line, points)
+    submitGuess(line, points, id)
   }
 
   const updateLineDescription = (newLine) => {
@@ -44,7 +44,7 @@ export const Matchup = ({ home, away, points, submitGuess }) => {
 
   return (
     <div
-      className={`grid grid-cols-8 w-96 ${border} shadow-lg my-4 bg-blue-100 rounded`}
+      className={`grid grid-cols-8 w-96 ${border} shadow-lg my-4 bg-white rounded-lg`}
     >
       <div
         className={`my-1 py-2 pl-4 ${complete ? 'col-span-8' : 'col-span-7'}`}

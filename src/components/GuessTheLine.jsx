@@ -8,18 +8,25 @@ import { useStore } from '@/store/guessTheLine'
 import FinalScorePopup from './FinalScorePopup'
 
 export const GuessTheLine = ({ matches }) => {
-  const [score, increaseScore, remainingGuesses, setRemainingGuesses] =
-    useStore((state) => [
-      state.score,
-      state.increaseScore,
-      state.remainingGuesses,
-      state.setRemainingGuesses
-    ])
+  const [
+    score,
+    increaseScore,
+    remainingGuesses,
+    setRemainingGuesses,
+    addGuess
+  ] = useStore((state) => [
+    state.score,
+    state.increaseScore,
+    state.remainingGuesses,
+    state.setRemainingGuesses,
+    state.addGuess
+  ])
   const [bannerOpacity, setBannerOpacity] = useState('0')
   const [bannerScore, setBannerScore] = useState(0)
 
-  const submitGuess = (guess, actual) => {
+  const submitGuess = (guess, actual, id) => {
     setRemainingGuesses(remainingGuesses - 1)
+    addGuess({ guess, actual, id })
     const points = getScoreFromGuess(guess, actual)
     increaseScore(points)
     setBannerScore(points)
@@ -51,6 +58,7 @@ export const GuessTheLine = ({ matches }) => {
                 away={match.away}
                 points={match.points}
                 key={match.id}
+                id={match.id}
                 submitGuess={submitGuess}
               />
             )
