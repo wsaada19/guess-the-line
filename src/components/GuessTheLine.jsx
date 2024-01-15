@@ -13,13 +13,19 @@ export const GuessTheLine = ({ matches }) => {
     increaseScore,
     remainingGuesses,
     setRemainingGuesses,
-    addGuess
+    addGuess,
+    date,
+    setDate,
+    reset
   ] = useStore((state) => [
     state.score,
     state.increaseScore,
     state.remainingGuesses,
     state.setRemainingGuesses,
-    state.addGuess
+    state.addGuess,
+    state.date,
+    state.setDate,
+    state.reset
   ])
 
   const [bannerOpacity, setBannerOpacity] = useState('0')
@@ -38,6 +44,14 @@ export const GuessTheLine = ({ matches }) => {
   }
 
   useEffect(() => {
+    const currentDate = new Date()
+    // check if date is the same day
+    if (!date || currentDate.getDate() !== new Date(date).getDate()) {
+      if (date) {
+        reset()
+      }
+      setDate(currentDate)
+    }
     if (remainingGuesses < 0) {
       setRemainingGuesses(matches.length)
     }
@@ -53,7 +67,7 @@ export const GuessTheLine = ({ matches }) => {
       {matches.length && remainingGuesses >= 0 ? (
         <Scorecard remainingGuesses={remainingGuesses} score={score} />
       ) : null}
-      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-6'>
         {matches.length ? (
           matches.map((match) => {
             return (
