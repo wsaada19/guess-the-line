@@ -1,12 +1,24 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { getScoreFromGuess } from '@/services/gameLogic'
+import { useStore } from '@/store/guessTheLine'
 
 export const Matchup = ({ home, away, points, id, submitGuess }) => {
   const [line, setLine] = useState(0.0)
   const [lineDescription, setLineDescription] = useState('Even')
   const [complete, setComplete] = useState(false)
+  const [pointsState, setPointsState] = useState(points)
+  const finalGuesses = useStore((state) => state.finalGuesses)
+
+  useEffect(() => {
+    const guess = finalGuesses.find((guess) => guess.id === id)
+    if (!complete && guess) {
+      setComplete(true)
+      setLine(guess.guess)
+      setPointsState(guess.actual)
+    }
+  }, [finalGuesses])
 
   const increaseLine = () => {
     setLine(line + 0.5)
@@ -19,9 +31,8 @@ export const Matchup = ({ home, away, points, id, submitGuess }) => {
   }
 
   const submitLine = () => {
-    setComplete(true)
-    updateLineDescription(points)
-    submitGuess(line, points, id)
+    updateLineDescription(pointsState)
+    submitGuess(line, pointsState, id, home, away)
   }
 
   const updateLineDescription = (newLine) => {
@@ -37,7 +48,7 @@ export const Matchup = ({ home, away, points, id, submitGuess }) => {
   let border = ''
   if (complete) {
     border =
-      getScoreFromGuess(line, points) > 0
+      getScoreFromGuess(line, pointsState) > 0
         ? 'border-4 border-green-500'
         : 'border-4 border-red-500'
   }
@@ -53,7 +64,7 @@ export const Matchup = ({ home, away, points, id, submitGuess }) => {
           name={`${home.city} ${home.name}`}
           logo={home.logo}
           line={line}
-          result={points}
+          result={pointsState}
           isComplete={complete}
           handleClick={increaseLine}
           isHome
@@ -62,7 +73,7 @@ export const Matchup = ({ home, away, points, id, submitGuess }) => {
           name={`${away.city} ${away.name}`}
           logo={away.logo}
           line={line}
-          result={points}
+          result={pointsState}
           isComplete={complete}
           handleClick={decreaseLine}
         />

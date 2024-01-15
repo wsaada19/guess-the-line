@@ -21,12 +21,13 @@ export const GuessTheLine = ({ matches }) => {
     state.setRemainingGuesses,
     state.addGuess
   ])
+
   const [bannerOpacity, setBannerOpacity] = useState('0')
   const [bannerScore, setBannerScore] = useState(0)
 
-  const submitGuess = (guess, actual, id) => {
+  const submitGuess = (guess, actual, id, home, away) => {
     setRemainingGuesses(remainingGuesses - 1)
-    addGuess({ guess, actual, id })
+    addGuess({ guess, actual, id, home, away })
     const points = getScoreFromGuess(guess, actual)
     increaseScore(points)
     setBannerScore(points)
@@ -42,10 +43,11 @@ export const GuessTheLine = ({ matches }) => {
 
   return (
     <>
-      <p className='font-semibold text-sm mb-6 pl-2'>
+      <p className='font-semibold text-sm mb-4 pl-2'>
         {new Date().toDateString()}
       </p>
       <FinalScorePopup matchesLength={matches.length} />
+      <hr className='mb-4 border-gray-800' />
       {matches.length && remainingGuesses >= 0 ? (
         <Scorecard remainingGuesses={remainingGuesses} score={score} />
       ) : null}
