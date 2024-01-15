@@ -38,7 +38,9 @@ export const GuessTheLine = ({ matches }) => {
   }
 
   useEffect(() => {
-    setRemainingGuesses(matches.length)
+    if (remainingGuesses < 0) {
+      setRemainingGuesses(matches.length)
+    }
   }, [])
 
   return (
