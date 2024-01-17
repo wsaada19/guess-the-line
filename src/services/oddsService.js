@@ -1,4 +1,4 @@
-const REVALIDATE = 60 * 30 // 30 minutes
+const REVALIDATE = 60 * 60 // 60 minutes
 export const getLatestGames = async () => {
   try {
     const apiKey = process.env.ODDS_API_KEY
@@ -11,8 +11,7 @@ export const getLatestGames = async () => {
     const endTime = getISO8601DateTimeInEST(6, 1)
     const url = `https://api.the-odds-api.com/v4/sports/${sportKey}/odds?apiKey=${apiKey}&regions=${regions}&markets=${markets}&oddsFormat=${oddsFormat}&dateFormat=${dateFormat}&commenceTimeFrom=${startTime}&commenceTimeTo=${endTime}`
     const result = await fetch(url, {
-      cache: 'force-cache',
-      revalidate: REVALIDATE
+      next: { revalidate: REVALIDATE }
     })
     const json = await result.json()
     // console.log('Remaining requests', json.headers['x-requests-remaining'])
@@ -33,6 +32,5 @@ function getISO8601DateTimeInEST(hour, day = 0) {
 
   // Format the date to ISO 8601
   const iso8601DateTime = currentDate.toISOString().split('.')[0] + 'Z'
-  console.log(iso8601DateTime)
   return iso8601DateTime
 }
