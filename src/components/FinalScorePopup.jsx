@@ -8,6 +8,7 @@ export default function FinalScorePopup({ matchesLength }) {
     state.remainingGuesses,
     state.finalGuesses
   ])
+
   return (
     <div
       className={`${
@@ -23,21 +24,20 @@ export default function FinalScorePopup({ matchesLength }) {
             <p className='text-sm font-semibold'>Actual</p>
             <p className='text-sm font-semibold'>Score</p>
           </div>
-          {remainingGuesses < 0 &&
-            finalGuesses.map((guess, index) => {
-              return (
-                <div className='grid grid-cols-8' key={index}>
-                  <p className='col-span-5'>
-                    {guess.home.name} vs. {guess.away.name}
-                  </p>
-                  <p className='text-sm mx-auto'>{guess.guess}</p>
-                  <p className='text-sm float-right mx-auto'>{guess.actual}</p>
-                  <p className='text-sm float-right mx-auto'>
-                    {getScoreFromGuess(guess.guess, guess.actual)}
-                  </p>
-                </div>
-              )
-            })}
+          {finalGuesses.map((guess, index) => {
+            return (
+              <div className='grid grid-cols-8' key={index}>
+                <p className='col-span-5'>
+                  {guess.home.name} vs. {guess.away.name}
+                </p>
+                <p className='text-sm mx-auto'>{guess.guess}</p>
+                <p className='text-sm float-right mx-auto'>{guess.actual}</p>
+                <p className='text-sm float-right mx-auto'>
+                  {getScoreFromGuess(guess.guess, guess.actual)}
+                </p>
+              </div>
+            )
+          })}
         </div>
         <p className='mt-2'>
           You scored <span className='font-semibold'>{score}</span> out of{' '}
