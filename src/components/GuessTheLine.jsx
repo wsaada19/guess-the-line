@@ -6,6 +6,7 @@ import PointsBanner from './PointsBanner'
 import { getScoreFromGuess } from '@/services/gameLogic'
 import { useStore } from '@/store/guessTheLine'
 import FinalScorePopup from './FinalScorePopup'
+import HelpModal from './HelpModal'
 
 export const GuessTheLine = ({ matches }) => {
   const [
@@ -59,9 +60,16 @@ export const GuessTheLine = ({ matches }) => {
 
   return (
     <>
+      <div className='flex items-center justify-between'>
+        <h1 className='text-3xl font-bold text-left mb-1 pl-1'>
+          Guess the Lines
+        </h1>
+        {/* <button className='hover:underline'>Help</button> */}
+      </div>
       <p className='font-semibold text-sm mb-4 pl-2'>
         {new Date().toDateString()}
       </p>
+      <HelpModal />
       <FinalScorePopup matchesLength={matches.length} />
       <hr className='mb-4 border-gray-800' />
       {matches.length && remainingGuesses >= 0 ? (
