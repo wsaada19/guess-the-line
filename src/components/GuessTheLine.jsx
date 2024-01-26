@@ -31,6 +31,7 @@ export const GuessTheLine = ({ matches }) => {
 
   const [bannerOpacity, setBannerOpacity] = useState('0')
   const [bannerScore, setBannerScore] = useState(0)
+  const [showHelpModal, setShowHelpModal] = useState(false)
 
   const submitGuess = (guess, actual, id, home, away) => {
     setRemainingGuesses(remainingGuesses - 1)
@@ -52,6 +53,7 @@ export const GuessTheLine = ({ matches }) => {
         reset()
       }
       setDate(currentDate)
+      setRemainingGuesses(matches.length)
     }
     if (remainingGuesses < 0) {
       setRemainingGuesses(matches.length)
@@ -64,12 +66,17 @@ export const GuessTheLine = ({ matches }) => {
         <h1 className='text-3xl font-bold text-left mb-1 pl-1'>
           Guess the Lines
         </h1>
-        {/* <button className='hover:underline'>Help</button> */}
+        <button
+          className='hover:underline'
+          onClick={() => setShowHelpModal(!showHelpModal)}
+        >
+          Help
+        </button>
       </div>
       <p className='font-semibold text-sm mb-4 pl-2'>
         {new Date().toDateString()}
       </p>
-      <HelpModal />
+      <HelpModal showModal={showHelpModal} setShowModal={setShowHelpModal} />
       <FinalScorePopup matchesLength={matches.length} />
       <hr className='mb-4 border-gray-800' />
       {matches.length && remainingGuesses >= 0 ? (

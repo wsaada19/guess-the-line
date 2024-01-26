@@ -1,17 +1,13 @@
 'use client'
-import { useState } from 'react'
-
-export default function Modal({ title, children, showModal }) {
-  const [show, setShow] = useState(false)
-
+export default function Modal({ title, children, showModal, setShowModal }) {
   const hideModal = () => {
-    setShow(!show)
+    setShowModal(false)
   }
 
   return (
     <div
       className={`${
-        !show && !showModal ? 'hidden' : ''
+        !showModal ? 'hidden' : ''
       } fixed z-50 inset-0 bg-gray-900 bg-opacity-80 overflow-y-auto h-full w-full px-4`}
     >
       <div className='p-4 relative top-24 mx-auto shadow-xl rounded-md bg-white max-w-lg'>
