@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { getScoreFromGuess } from '@/services/gameLogic'
 import { useStore } from '@/store/guessTheLine'
+import { getTime } from '@/services/timeService'
 
-export const Matchup = ({ home, away, points, id, submitGuess }) => {
+export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
   const [line, setLine] = useState(0.0)
   const [lineDescription, setLineDescription] = useState('Even')
   const [complete, setComplete] = useState(false)
@@ -55,11 +56,9 @@ export const Matchup = ({ home, away, points, id, submitGuess }) => {
 
   return (
     <div
-      className={`grid grid-cols-8 w-96 ${border} shadow-lg my-4 bg-white rounded-lg`}
+      className={`grid grid-cols-8 w-96 ${border} shadow-md shadow-slate-500 my-4 bg-white rounded-lg`}
     >
-      <div
-        className={`my-1 py-2 pl-4 ${complete ? 'col-span-8' : 'col-span-7'}`}
-      >
+      <div className={`py-1 pl-4 ${complete ? 'col-span-8' : 'col-span-7'}`}>
         <Team
           name={`${home.city} ${home.name}`}
           logo={home.logo}
@@ -100,15 +99,20 @@ export const Matchup = ({ home, away, points, id, submitGuess }) => {
           </button>
         </div>
       )}
-      <p className='col-span-6 px-4 p-1 m-1 font-semibold'>{lineDescription}</p>
+      <p className='col-span-6 px-4 p-1 my-1 mt-1 font-semibold'>
+        {lineDescription}
+      </p>
       {!complete && (
         <button
           onClick={submitLine}
-          className='col-span-2 p-1 mr-3 mb-3 bg-orange-500 text-white rounded-sm'
+          className='col-span-2 p-1 mr-3 mt-2 mb-3 bg-orange-500 text-white rounded-sm shadow-md shadow-slate-600'
         >
           Submit
         </button>
       )}
+      <p className='col-span-6 mx-4 mb-2 text-sm text-slate-700'>
+        {getTime(gameTime) + ' @ ' + home.city}
+      </p>
     </div>
   )
 }
@@ -124,18 +128,18 @@ const Team = ({ name, logo, line, result, isComplete, isHome = false }) => {
           width={32}
           height={32}
           alt={name + ' logo'}
-          className='inline-block'
+          className='inline-block pr-2'
         />
         {name}
         {!isComplete ? (
-          <span className='w-11 px-1 my-1 bg-orange-500 float-right text-right text-white rounded-sm'>
+          <div className=' inline-block w-11 px-1 my-1 bg-orange-500 shadow-md shadow-slate-600 float-right text-right text-white rounded-sm'>
             {isHome ? line * -1 : line}
-          </span>
+          </div>
         ) : (
           <span
             className={`w-11 px-1 my-1 mr-3 ${
               difference > 0 ? 'bg-green-500' : 'bg-red-500'
-            } float-right text-right text-white rounded-sm`}
+            } float-right shadow-xl text-right text-white rounded-sm`}
           >
             {isHome ? line * -1 : line}
           </span>

@@ -92,6 +92,7 @@ export const GuessTheLine = ({ matches }) => {
                 points={match.points}
                 key={match.id}
                 id={match.id}
+                gameTime={match.gameTime}
                 submitGuess={submitGuess}
               />
             )
