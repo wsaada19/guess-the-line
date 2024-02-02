@@ -12,8 +12,7 @@ export const GuessTheLine = ({ matches }) => {
   const [
     score,
     increaseScore,
-    remainingGuesses,
-    setRemainingGuesses,
+    numberOfGuesses,
     addGuess,
     date,
     setDate,
@@ -21,8 +20,7 @@ export const GuessTheLine = ({ matches }) => {
   ] = useStore((state) => [
     state.score,
     state.increaseScore,
-    state.remainingGuesses,
-    state.setRemainingGuesses,
+    state.numberOfGuesses,
     state.addGuess,
     state.date,
     state.setDate,
@@ -34,7 +32,6 @@ export const GuessTheLine = ({ matches }) => {
   const [showHelpModal, setShowHelpModal] = useState(false)
 
   const submitGuess = (guess, actual, id, home, away) => {
-    setRemainingGuesses(remainingGuesses - 1)
     addGuess({ guess, actual, id, home, away })
     const points = getScoreFromGuess(guess, actual)
     increaseScore(points)
@@ -53,10 +50,6 @@ export const GuessTheLine = ({ matches }) => {
         reset()
       }
       setDate(currentDate)
-      setRemainingGuesses(matches.length)
-    }
-    if (remainingGuesses < 0) {
-      setRemainingGuesses(matches.length)
     }
   }, [])
 
@@ -79,8 +72,11 @@ export const GuessTheLine = ({ matches }) => {
       <HelpModal showModal={showHelpModal} setShowModal={setShowHelpModal} />
       <FinalScorePopup matchesLength={matches.length} />
       <hr className='mb-4 border-gray-800' />
-      {matches.length && remainingGuesses >= 0 ? (
-        <Scorecard remainingGuesses={remainingGuesses} score={score} />
+      {matches.length ? (
+        <Scorecard
+          remainingGuesses={matches.length - numberOfGuesses()}
+          score={score}
+        />
       ) : null}
       <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6'>
         {matches.length ? (

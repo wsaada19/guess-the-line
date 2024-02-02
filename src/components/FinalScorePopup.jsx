@@ -4,9 +4,9 @@ import { useStore } from '@/store/guessTheLine'
 import { useState } from 'react'
 
 export default function FinalScorePopup({ matchesLength }) {
-  const [score, remainingGuesses, finalGuesses] = useStore((state) => [
+  const [score, numberOfGuesses, finalGuesses] = useStore((state) => [
     state.score,
-    state.remainingGuesses,
+    state.numberOfGuesses,
     state.finalGuesses
   ])
 
@@ -19,7 +19,7 @@ export default function FinalScorePopup({ matchesLength }) {
   return (
     <div
       className={`${
-        remainingGuesses !== 0 || !show ? 'hidden' : ''
+        numberOfGuesses() !== matchesLength || !show ? 'hidden' : ''
       } fixed z-50 inset-0 bg-gray-900 bg-opacity-80 overflow-y-auto h-full w-full px-4`}
     >
       <div className='p-4 relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md'>
