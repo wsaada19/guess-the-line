@@ -81,7 +81,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
       </div>
       {!complete && (
         <div className='col-span-1 m-auto'>
-          <button className='block mb-4 mt-1' onClick={increaseLine}>
+          <button className='block mb-4 mt-2' onClick={increaseLine}>
             <PlusIcon />
           </button>
           <button className='block' onClick={decreaseLine}>
