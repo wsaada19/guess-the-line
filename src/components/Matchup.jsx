@@ -81,7 +81,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
       </div>
       {!complete && (
         <div className='col-span-1 m-auto'>
-          <button className='block mb-4 mt-2' onClick={increaseLine}>
+          <button className='block mb-4' onClick={increaseLine}>
             <PlusIcon />
           </button>
           <button className='block' onClick={decreaseLine}>
@@ -122,7 +122,7 @@ const Team = ({ name, logo, line, result, isComplete, isHome = false }) => {
         />
         {name}
         {!isComplete ? (
-          <div className=' inline-block w-11 px-1 my-1 bg-orange-500 shadow-md shadow-slate-600 float-right text-right text-white rounded-sm'>
+          <div className=' inline-block w-11 px-1 bg-orange-500 shadow-md shadow-slate-600 float-right text-right text-white rounded-sm'>
             {isHome ? line * -1 : line}
           </div>
         ) : (

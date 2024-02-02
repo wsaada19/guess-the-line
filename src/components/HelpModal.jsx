@@ -5,7 +5,7 @@ import Modal from './Modal'
 export default function HelpModal({ showModal, setShowModal }) {
   return (
     <Modal
-      title={'How to Play Guess the Lines'}
+      title={'How to Play'}
       showModal={showModal}
       setShowModal={setShowModal}
     >
