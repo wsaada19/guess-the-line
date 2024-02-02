@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { getScoreFromGuess } from '@/services/gameLogic'
 import { useStore } from '@/store/guessTheLine'
 import { getTime } from '@/services/timeService'
+import { MinusIcon, PlusIcon } from './ButtonSvg'
 
 export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
   const [line, setLine] = useState(0.0)
@@ -18,6 +19,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
       setComplete(true)
       setLine(guess.guess)
       setPointsState(guess.actual)
+      updateLineDescription(guess.actual)
     }
   }, [finalGuesses])
 
@@ -58,7 +60,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
     <div
       className={`grid grid-cols-8 w-96 ${border} shadow-md shadow-slate-500 my-4 bg-white rounded-lg`}
     >
-      <div className={`py-1 pl-4 ${complete ? 'col-span-8' : 'col-span-7'}`}>
+      <div className={`py-2 pl-4 ${complete ? 'col-span-8' : 'col-span-7'}`}>
         <Team
           name={`${home.city} ${home.name}`}
           logo={home.logo}
@@ -80,37 +82,25 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
       {!complete && (
         <div className='col-span-1 m-auto'>
           <button className='block mb-4 mt-1' onClick={increaseLine}>
-            <Image
-              src='plus.svg'
-              width={24}
-              height={24}
-              alt='Increase line'
-              className='inline-block'
-            />
+            <PlusIcon />
           </button>
           <button className='block' onClick={decreaseLine}>
-            <Image
-              src='minus.svg'
-              width={24}
-              height={24}
-              alt='Increase line'
-              className='inline-block'
-            />
+            <MinusIcon />
           </button>
         </div>
       )}
-      <p className='col-span-6 px-4 p-1 my-1 mt-1 font-semibold'>
+      <p className='col-span-6 px-4 p-1 my-1 mt-1 font-medium'>
         {lineDescription}
       </p>
       {!complete && (
         <button
           onClick={submitLine}
-          className='col-span-2 p-1 mr-3 mt-2 mb-3 bg-orange-500 text-white rounded-sm shadow-md shadow-slate-600'
+          className='col-span-2 p-1 mr-3 mt-2 bg-orange-500 text-white rounded-sm shadow-md shadow-slate-600'
         >
           Submit
         </button>
       )}
-      <p className='col-span-6 mx-4 mb-2 text-sm text-slate-700'>
+      <p className='col-span-6 mx-4 mb-2 text-xs text-slate-700'>
         {getTime(gameTime) + ' @ ' + home.city}
       </p>
     </div>
