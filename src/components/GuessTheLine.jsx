@@ -31,6 +31,8 @@ export const GuessTheLine = ({ matches }) => {
   const [bannerScore, setBannerScore] = useState(0)
   const [showHelpModal, setShowHelpModal] = useState(false)
 
+  const [isLoading, setIsLoading] = useState(true)
+
   const submitGuess = (guess, actual, id, home, away) => {
     addGuess({ guess, actual, id, home, away })
     const points = getScoreFromGuess(guess, actual)
@@ -45,12 +47,13 @@ export const GuessTheLine = ({ matches }) => {
   useEffect(() => {
     const currentDate = new Date()
     // check if date is the same day
+    console.log('current ' + currentDate.getDate())
+    console.log('date ' + new Date(date).getDate())
     if (!date || currentDate.getDate() !== new Date(date).getDate()) {
-      if (date) {
-        reset()
-      }
+      reset()
       setDate(currentDate)
     }
+    setIsLoading(false)
   }, [])
 
   return (
@@ -60,7 +63,7 @@ export const GuessTheLine = ({ matches }) => {
           Guess the Lines
         </h1>
         <button
-          className='hover:underline'
+          className='hover:underline font-semibold'
           onClick={() => setShowHelpModal(!showHelpModal)}
         >
           Help
@@ -79,7 +82,7 @@ export const GuessTheLine = ({ matches }) => {
         />
       ) : null}
       <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6'>
-        {matches.length ? (
+        {matches.length && !isLoading ? (
           matches.map((match) => {
             return (
               <Matchup
