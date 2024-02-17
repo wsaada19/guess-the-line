@@ -7,7 +7,7 @@ export default async function Home() {
   const data = await getLatestGames()
   const matches = getLatestGamesData(data)
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between py-6 md:px-12'>
+    <main className='min-h-screen items-center py-6 md:px-12'>
       <div>
         <GuessTheLine matches={matches} />
       </div>

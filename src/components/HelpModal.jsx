@@ -18,7 +18,7 @@ export default function HelpModal({ showModal, setShowModal }) {
         <div className='p-2 border border-green-600'>
           <div className='flex items-center gap-4 mb-1'>
             <div className='flex gap-2 items-center'>Perfect Guess</div>
-            <div className='font-semibold ml-auto'>15 points</div>
+            <div className='font-semibold ml-auto'>10 points (+5 bonus)</div>
           </div>
           <div className='flex items-center gap-4 mb-1'>
             <div className='flex gap-2 items-center'>Within 1.5</div>

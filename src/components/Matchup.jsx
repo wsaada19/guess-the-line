@@ -58,7 +58,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
 
   return (
     <div
-      className={`grid grid-cols-8 w-96 ${border} shadow-md shadow-slate-500 my-4 bg-white rounded-lg`}
+      className={`grid self-center mx-auto grid-cols-8 w-96 ${border} shadow-sm shadow-slate-500 my-4 bg-white rounded-lg`}
     >
       <div className={`py-2 pl-4 ${complete ? 'col-span-8' : 'col-span-7'}`}>
         <Team
@@ -95,7 +95,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
       {!complete && (
         <button
           onClick={submitLine}
-          className='col-span-2 p-1 mr-3 mt-2 bg-orange-500 text-white rounded-sm shadow-md shadow-slate-600'
+          className='col-span-2 p-1 mr-3 mt-2 bg-orange-500 text-white rounded-sm shadow-sm shadow-slate-500'
         >
           Submit
         </button>
@@ -122,14 +122,14 @@ const Team = ({ name, logo, line, result, isComplete, isHome = false }) => {
         />
         {name}
         {!isComplete ? (
-          <div className=' inline-block w-11 px-1 bg-orange-500 shadow-md shadow-slate-600 float-right text-right text-white rounded-sm'>
+          <div className=' inline-block w-11 px-1 bg-orange-500 shadow-sm shadow-slate-500 float-right text-right text-white rounded-sm'>
             {isHome ? line * -1 : line}
           </div>
         ) : (
           <span
             className={`w-11 px-1 my-1 mr-3 ${
               difference > 0 ? 'bg-green-500' : 'bg-red-500'
-            } float-right shadow-xl text-right text-white rounded-sm`}
+            } float-right shadow-sm shadow-slate-600 text-right text-white rounded-sm`}
           >
             {isHome ? line * -1 : line}
           </span>
