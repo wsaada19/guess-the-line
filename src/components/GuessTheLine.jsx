@@ -46,9 +46,6 @@ export const GuessTheLine = ({ matches }) => {
 
   useEffect(() => {
     const currentDate = new Date()
-    // check if date is the same day
-    console.log('current ' + currentDate.getDate())
-    console.log('date ' + new Date(date).getDate())
     if (!date || currentDate.getDate() !== new Date(date).getDate()) {
       reset()
       setDate(currentDate)
@@ -88,7 +85,7 @@ export const GuessTheLine = ({ matches }) => {
         />
       ) : null}
       {matches.length && !isLoading ? (
-        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6'>
+        <div className='grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-x-6'>
           {matches.map((match) => {
             return (
               <Matchup

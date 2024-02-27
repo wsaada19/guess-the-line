@@ -16,16 +16,6 @@ export default async function Home() {
 }
 
 const getLatestGamesData = (matches) => {
-  // split matches into arrays based on the commence time
-  // const matchesByDate = matches.reduce((acc, match) => {
-  //   const date = new Date(match.commence_time).toDateString()
-  //   if (!acc[date]) {
-  //     acc[date] = []
-  //   }
-  //   acc[date].push(match)
-  //   return acc
-  // }, {})
-  // console.log(matchesByDate)
   return matches.map((matchup) => {
     return {
       home: getTeamData(matchup.home_team),

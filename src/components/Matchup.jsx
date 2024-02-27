@@ -58,11 +58,11 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
 
   return (
     <div
-      className={`grid self-center mx-auto grid-cols-8 w-96 ${border} shadow-sm shadow-slate-500 my-4 bg-white rounded-lg`}
+      className={`grid self-center mx-auto grid-cols-8 w-full ${border} shadow-sm shadow-slate-500 my-4 bg-white rounded-lg`}
     >
       <div className={`py-2 pl-4 ${complete ? 'col-span-8' : 'col-span-7'}`}>
         <Team
-          name={`${home.city} ${home.name}`}
+          name={`${home.name}`}
           logo={home.logo}
           line={line}
           result={pointsState}
@@ -71,7 +71,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
           isHome
         />
         <Team
-          name={`${away.city} ${away.name}`}
+          name={`${away.name}`}
           logo={away.logo}
           line={line}
           result={pointsState}
