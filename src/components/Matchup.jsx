@@ -112,7 +112,7 @@ const Team = ({ name, logo, line, result, isComplete, isHome = false }) => {
 
   return (
     <>
-      <p className='py-2 text-base'>
+      <p className='py-2 text-lg'>
         <Image
           src={logo}
           width={32}
