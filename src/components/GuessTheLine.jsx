@@ -57,7 +57,7 @@ export const GuessTheLine = ({ matches }) => {
     <div className='max-w-5xl mx-auto px-8'>
       <div className='flex items-center justify-between'>
         <h1 className='text-3xl font-bold text-left mb-1 pl-1 text-white'>
-          Guess the Lines
+          Guess the Line
         </h1>
         <button
           className='hover:underline font-semibold text-white'
