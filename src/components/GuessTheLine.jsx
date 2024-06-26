@@ -56,11 +56,11 @@ export const GuessTheLine = ({ matches }) => {
   return (
     <div className='max-w-5xl mx-auto px-8'>
       <div className='flex items-center justify-between'>
-        <h1 className='text-3xl font-bold text-left mb-1 pl-1'>
+        <h1 className='text-3xl font-bold text-left mb-1 pl-1 text-white'>
           Guess the Lines
         </h1>
         <button
-          className='hover:underline font-semibold'
+          className='hover:underline font-semibold text-white'
           onClick={() => setShowHelpModal(!showHelpModal)}
         >
           Help
@@ -72,12 +72,12 @@ export const GuessTheLine = ({ matches }) => {
           Restart
         </button> */}
       </div>
-      <p className='font-semibold text-sm mb-4 pl-2'>
+      <p className='font-semibold text-sm mb-4 pl-2 text-white'>
         {new Date().toDateString()}
       </p>
       <HelpModal showModal={showHelpModal} setShowModal={setShowHelpModal} />
       <FinalScorePopup matchesLength={matches.length} />
-      <hr className='mb-4 border-gray-800' />
+      <hr className='mb-4 border-white' />
       {matches.length ? (
         <Scorecard
           remainingGuesses={matches.length - numberOfGuesses()}

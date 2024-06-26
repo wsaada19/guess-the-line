@@ -4,11 +4,17 @@ import { Badge } from '@/components/ui/badge'
 export default function Scorecard({ remainingGuesses, score }) {
   return (
     <div className='pl-2 mb-4 md:mb-0 flex items-center justify-between gap-2 text-white'>
-      <Badge className='items-center text-base border-none' variant='outline'>
-        <PuzzleIcon className='h-4.5 w-4.5 -translate-x-1' />
+      <Badge
+        className='items-center text-base border-none text-white'
+        variant='outline'
+      >
+        <PuzzleIcon className='h-4.5 w-4.5 -translate-x-1 mr-1' />
         {remainingGuesses} Remaining Guesses
       </Badge>
-      <Badge className='items-center text-base border-none' variant='outline'>
+      <Badge
+        className='items-center text-base border-none text-white'
+        variant='outline'
+      >
         <GoalIcon className='h-4.5 w-4.5 -translate-x-1 text-xlg' />
         Score: {score}
       </Badge>
@@ -25,7 +31,7 @@ function GoalIcon(props) {
       height='24'
       viewBox='0 0 24 24'
       fill='none'
-      stroke='black'
+      stroke='white'
       strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
@@ -46,7 +52,7 @@ function PuzzleIcon(props) {
       height='24'
       viewBox='0 0 24 24'
       fill='none'
-      stroke='black'
+      stroke='white'
       strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
