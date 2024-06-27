@@ -5,7 +5,10 @@ import { getLatestGames } from '@/services/oddsService'
 
 export default async function Home() {
   const data = await getLatestGames()
-  const matches = getLatestGamesData(data)
+  let matches = getLatestGamesData(data)
+  if (matches.length === 0) {
+    matches = getLatestGamesData(testData)
+  }
   return (
     <main className='min-h-screen items-center py-6 md:px-12'>
       <div>
