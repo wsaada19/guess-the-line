@@ -1,6 +1,8 @@
 export const getTime = (dateString) => {
   const date = new Date(dateString)
 
+  let day = date.getDate()
+  let month = date.getMonth() + 1
   let hours = date.getHours()
   let minutes = date.getMinutes()
 
@@ -10,5 +12,5 @@ export const getTime = (dateString) => {
 
   minutes = minutes < 10 ? '0' + minutes : minutes
 
-  return hours + ':' + minutes + ' ' + meridiem
+  return month + '/' + day + ' ' + hours + ':' + minutes + ' ' + meridiem
 }
