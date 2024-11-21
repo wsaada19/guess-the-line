@@ -2,7 +2,7 @@ const REVALIDATE = 60 * 60 // 60 minutes
 export const getLatestGames = async () => {
   try {
     const apiKey = process.env.ODDS_API_KEY
-    const sportKey = 'basketball_wnba' // use the sport_key from the /sports endpoint below, or use 'upcoming' to see the next 8 games across all sports
+    const sportKey = 'basketball_nba' // use the sport_key from the /sports endpoint below, or use 'upcoming' to see the next 8 games across all sports
     const regions = 'us' // uk | us | eu | au. Multiple can be specified if comma delimited
     const markets = 'spreads' // h2h | spreads | totals. Multiple can be specified if comma delimited
     const oddsFormat = 'decimal' // decimal | american
