@@ -14,7 +14,6 @@ export const getLatestGames = async () => {
       next: { revalidate: REVALIDATE }
     })
     const json = await result.json()
-    console.log(json)
     return json
   } catch (err) {
     console.log(err)
