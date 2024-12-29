@@ -95,7 +95,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
       {!complete && (
         <button
           onClick={submitLine}
-          className='col-span-2 p-1 mr-3 mt-2 bg-orange-500 text-white rounded-sm shadow-sm shadow-slate-500'
+          className='col-span-2 gap-x-2 py-1 mx-4 md:mx-2 lg:mx-4 mt-2 bg-orange-500 text-white rounded-sm shadow-sm shadow-slate-500'
         >
           Submit
         </button>
