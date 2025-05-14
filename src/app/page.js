@@ -11,9 +11,7 @@ export default async function Home() {
   }
   return (
     <main className='min-h-screen items-center py-6 md:px-12'>
-      <div>
         <GuessTheLine matches={matches} />
-      </div>
     </main>
   )
 }
