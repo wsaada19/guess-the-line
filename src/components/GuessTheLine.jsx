@@ -89,7 +89,7 @@ export const GuessTheLine = ({ matches }) => {
   return (
     <div className='max-w-6xl mx-auto px-8'>
       <div className='flex items-center justify-between'>
-        <h1 className='text-3xl font-bold text-left mb-1 pl-1 text-white'>
+        <h1 className='text-3xl font-bold text-left mb-1 text-white'>
           Guess the Line
         </h1>
         <span className='flex gap-4'>
@@ -107,8 +107,8 @@ export const GuessTheLine = ({ matches }) => {
         </button>
         </span>
       </div>
-      <p className='font-semibold text-sm mb-4 pl-2 text-white'>
-        {new Date().toDateString()}
+      <p className='font-semibold text-sm mb-4 text-white'>
+        {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
       </p>
       <HelpModal showModal={showHelpModal} setShowModal={setShowHelpModal} />
       <FinalScorePopup matchesLength={matches.length} />

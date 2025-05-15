@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge'
 
 export default function Scorecard({ remainingGuesses, score }) {
   return (
-    <div className='pl-2 mb-4 md:mb-0 flex items-center justify-between gap-2 text-white'>
+    <div className='mb-4 md:mb-0 flex items-center justify-between gap-2 text-white bg-blue-200/30 rounded-lg px-4 py-2'>
       <Badge
         className='items-center text-base border-none text-white'
         variant='outline'
