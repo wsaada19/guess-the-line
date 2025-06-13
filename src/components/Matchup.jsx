@@ -19,14 +19,15 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
   const actualPoints = existingGuess?.actual || points
 
   const lineDescription = useMemo(() => {
-    if(line > 0) {
-      return `${home.name} favored by ${line}`
-    } else if (line < 0) {
-      return `${away.name} favored by ${line * -1}`
+    let value = isComplete ? actualPoints : line
+    if(value > 0) {
+      return `${home.name} favored by ${value}`
+    } else if (value < 0) {
+      return `${away.name} favored by ${value * -1}`
     } else {
       return 'Even'
     }
-  }, [line, home.name, away.name])
+  }, [line, home.name, away.name, actualPoints, isComplete])
 
   const increaseLine = () => {
     setLine(line + 0.5)

@@ -4,7 +4,8 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 const initialState = {
   score: 0,
   finalGuesses: [],
-  date: undefined
+  date: undefined,
+  selectedSport: 'both' // 'both', 'nba', or 'wnba'
 }
 
 export const useStore = create(
@@ -13,11 +14,12 @@ export const useStore = create(
       ...initialState,
       addGuess: (matchData) =>
         set((state) => ({ finalGuesses: [...state.finalGuesses, matchData] })),
-      increaseScore: (points) =>
+      updateScore: (points) =>
         set((state) => ({ score: state.score + points })),
       clearScore: () => set({ score: 0 }),
       numberOfGuesses: () => get().finalGuesses.length,
       setDate: (date) => set({ date }),
+      setSelectedSport: (sport) => set({ selectedSport: sport }),
       reset: () => set(initialState)
     }),
     {

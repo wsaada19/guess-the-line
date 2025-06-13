@@ -1,4 +1,4 @@
-import { getTeamData } from '@/services/getNbaTeamInfo'
+import { getTeamData } from '@/services/teamData'
 import testData from '../data/testData.json'
 import { GuessTheLine } from '@/components/GuessTheLine'
 import { getAllGames } from '@/services/oddsService'
