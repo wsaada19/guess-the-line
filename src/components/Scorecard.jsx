@@ -9,7 +9,7 @@ export default function Scorecard({ remainingGuesses, score }) {
         variant='outline'
       >
         <PuzzleIcon className='h-4.5 w-4.5 -translate-x-1 mr-1' />
-        {remainingGuesses} Remaining Guesses
+        {remainingGuesses} Guess{remainingGuesses === 1 ? '' : 'es'} Remaining
       </Badge>
       <Badge
         className='items-center text-base border-none text-white'

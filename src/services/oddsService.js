@@ -1,8 +1,7 @@
 const REVALIDATE = 60 * 60 // 60 minutes
-export const getLatestGames = async () => {
+export const getLatestGames = async (sportKey = 'basketball_nba') => {
   try {
     const apiKey = process.env.ODDS_API_KEY
-    const sportKey = 'basketball_nba' // use the sport_key from the /sports endpoint below, or use 'upcoming' to see the next 8 games across all sports
     const regions = 'us' // uk | us | eu | au. Multiple can be specified if comma delimited
     const markets = 'spreads' // h2h | spreads | totals. Multiple can be specified if comma delimited
     const oddsFormat = 'decimal' // decimal | american
@@ -18,6 +17,12 @@ export const getLatestGames = async () => {
   } catch (err) {
     console.log(err)
   }
+}
+
+export const getAllGames = async () => {
+  const nba = await getLatestGames();
+  const wnba = await getLatestGames('basketball_wnba');
+  return [...nba, ...wnba];
 }
 
 function getISO8601DateTimeInEST(hour, day = 0) {

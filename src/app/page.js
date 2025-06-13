@@ -1,10 +1,10 @@
 import { getTeamData } from '@/services/getNbaTeamInfo'
 import testData from '../data/testData.json'
 import { GuessTheLine } from '@/components/GuessTheLine'
-import { getLatestGames } from '@/services/oddsService'
+import { getAllGames } from '@/services/oddsService'
 
 export default async function Home() {
-  const data = await getLatestGames()
+  const data = await getAllGames()
   let matches = getLatestGamesData(data)
   if (matches.length === 0) {
     matches = getLatestGamesData(testData)
