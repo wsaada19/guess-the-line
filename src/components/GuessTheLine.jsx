@@ -95,9 +95,9 @@ export const GuessTheLine = ({ matches }) => {
           onChange={handleSportChange}
           className="bg-gray-800 text-white px-3 py-1 rounded border border-gray-600 focus:outline-none focus:border-blue-500"
         >
-          <option value="both">Both Leagues</option>
-          <option value="nba">NBA Only</option>
-          <option value="wnba">WNBA Only</option>
+          <option value="both">All</option>
+          <option value="nba">NBA</option>
+          <option value="wnba">WNBA</option>
         </select>
       </div>
 
