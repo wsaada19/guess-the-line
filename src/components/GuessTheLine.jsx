@@ -93,7 +93,7 @@ export const GuessTheLine = ({ matches }) => {
         <select
           value={selectedSport}
           onChange={handleSportChange}
-          className="bg-gray-800 text-white px-3 py-1 rounded border border-gray-600 focus:outline-none focus:border-blue-500"
+          className="bg-white text-black px-3 py-1 rounded border border-white focus:outline-none focus:border-blue-500"
         >
           <option value="both">All</option>
           <option value="nba">NBA</option>

@@ -1,5 +1,5 @@
 'use client'
-import { Badge } from '@/components/ui/Badge'
+import { Badge } from '@/components/ui/badge'
 import PuzzleIcon from '@/components/ui/PuzzleIcon'
 import GoalIcon from '@/components/ui/GoalIcon'
 
