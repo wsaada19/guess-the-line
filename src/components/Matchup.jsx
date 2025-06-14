@@ -27,7 +27,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
     } else {
       return 'Even'
     }
-  }, [line, home.name, away.name, actualPoints, isComplete])
+  }, [line, home, away, actualPoints, isComplete])
 
   const increaseLine = () => {
     setLine(line + 0.5)
@@ -49,7 +49,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
         ? 'border-4 border-green-500'
         : 'border-4 border-red-500'
   }
-
+  if (!home || !away) return null
   return (
     <div
       className={`grid self-center mx-auto grid-cols-8 w-full ${border} shadow-sm shadow-slate-500 my-4 bg-white rounded-lg`}

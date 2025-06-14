@@ -214,5 +214,16 @@
     "defRating": 106.1,
     "offRating": 97.5,
     "pace": 96.78
+  },
+  {
+    "city": "Golden State",
+    "name": "Valkyries",
+    "logo": "https://cdn.nba.com/logos/wnba/1611661331/primary/D/logo.svg",
+    "teamId": 1611661331,
+    "team": "Golden State Valkyries",
+    "gamesPlayed": 16,
+    "wins": 16,
+    "losses": 0,
+    "winPercentage": 1
   }
 ]
