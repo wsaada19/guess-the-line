@@ -53,15 +53,15 @@ export const GuessTheLine = ({ initialGames }) => {
     const gamesMap = new Map();
     
     initialGames.forEach(game => {
-      // Convert game time to local date for grouping
-      const gameDate = new Date(game.gameTime);
+      // Convert raw server time to local timezone for grouping
+      const serverTime = new Date(game.gameTime);
       const localGameDate = new Date(
-        gameDate.getFullYear(),
-        gameDate.getMonth(),
-        gameDate.getDate(),
-        gameDate.getHours(),
-        gameDate.getMinutes(),
-        gameDate.getSeconds()
+        serverTime.getFullYear(),
+        serverTime.getMonth(),
+        serverTime.getDate(),
+        serverTime.getHours(),
+        serverTime.getMinutes(),
+        serverTime.getSeconds()
       );
       
       // Set time to midnight for consistent date comparison
@@ -71,7 +71,21 @@ export const GuessTheLine = ({ initialGames }) => {
       if (!gamesMap.has(dateKey)) {
         gamesMap.set(dateKey, []);
       }
-      gamesMap.get(dateKey).push(game);
+      
+      // Convert the game time to local timezone for display
+      const localGameTime = new Date(
+        serverTime.getFullYear(),
+        serverTime.getMonth(),
+        serverTime.getDate(),
+        serverTime.getHours(),
+        serverTime.getMinutes(),
+        serverTime.getSeconds()
+      );
+      
+      gamesMap.get(dateKey).push({
+        ...game,
+        gameTime: localGameTime.toISOString()
+      });
     });
     
     setGamesByDate(gamesMap);
