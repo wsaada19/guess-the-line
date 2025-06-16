@@ -31,16 +31,14 @@ export const getAllGames = async () => {
   
   allGames.forEach(game => {
     // Convert server time to local timezone
-    const gameDate = new Date(game.commence_time);
-    
-    // Create a new date object in local timezone
+    const serverTime = new Date(game.commence_time);
     const localGameDate = new Date(
-      gameDate.getFullYear(),
-      gameDate.getMonth(),
-      gameDate.getDate(),
-      gameDate.getHours(),
-      gameDate.getMinutes(),
-      gameDate.getSeconds()
+      serverTime.getFullYear(),
+      serverTime.getMonth(),
+      serverTime.getDate(),
+      serverTime.getHours(),
+      serverTime.getMinutes(),
+      serverTime.getSeconds()
     );
     
     // Set time to midnight for consistent date comparison

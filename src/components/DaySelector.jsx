@@ -3,8 +3,16 @@ import { useStore } from '@/store/guessTheLine'
 
 const getNextDay = (daysToAdd) => {
   const date = new Date()
-  date.setDate(date.getDate() + daysToAdd)
-  return date
+  // Create a new date object to avoid timezone issues
+  const localDate = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate() + daysToAdd,
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds()
+  )
+  return localDate
 }
 
 export default function DaySelector() {

@@ -4,7 +4,16 @@ import { getScoreFromGuess } from '@/services/gameLogic'
 
 const getTodayString = () => {
   const today = new Date()
-  return today.toISOString().split('T')[0]
+  // Create a new date object to avoid timezone issues
+  const localToday = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate(),
+    today.getHours(),
+    today.getMinutes(),
+    today.getSeconds()
+  )
+  return localToday.toISOString().split('T')[0]
 }
 
 const initialState = {
