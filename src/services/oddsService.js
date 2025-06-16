@@ -30,10 +30,22 @@ export const getAllGames = async () => {
   const gamesByDate = new Map();
   
   allGames.forEach(game => {
+    // Convert server time to local timezone
     const gameDate = new Date(game.commence_time);
+    
+    // Create a new date object in local timezone
+    const localGameDate = new Date(
+      gameDate.getFullYear(),
+      gameDate.getMonth(),
+      gameDate.getDate(),
+      gameDate.getHours(),
+      gameDate.getMinutes(),
+      gameDate.getSeconds()
+    );
+    
     // Set time to midnight for consistent date comparison
-    gameDate.setHours(0, 0, 0, 0);
-    const dateKey = gameDate.toISOString().split('T')[0];
+    localGameDate.setHours(0, 0, 0, 0);
+    const dateKey = localGameDate.toISOString().split('T')[0];
     
     if (!gamesByDate.has(dateKey)) {
       gamesByDate.set(dateKey, []);
