@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   darkMode: ['class'],
   content: [
@@ -72,5 +74,24 @@ module.exports = {
       }
     }
   },
-  plugins: [require('tailwindcss-animate')]
+  plugins: [
+    require('tailwindcss-animate'),
+    plugin(function({ addUtilities }) {
+      addUtilities({
+        '.no-arrows': {
+          '&::-webkit-outer-spin-button': {
+            '-webkit-appearance': 'none',
+            'margin': '0'
+          },
+          '&::-webkit-inner-spin-button': {
+            '-webkit-appearance': 'none',
+            'margin': '0'
+          },
+          '&[type=number]': {
+            '-moz-appearance': 'textfield'
+          }
+        }
+      })
+    })
+  ]
 }

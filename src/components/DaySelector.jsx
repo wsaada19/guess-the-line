@@ -1,4 +1,5 @@
 'use client'
+import { useStore } from '@/store/guessTheLine'
 
 const getNextDay = (daysToAdd) => {
   const date = new Date()
@@ -6,18 +7,34 @@ const getNextDay = (daysToAdd) => {
   return date
 }
 
-export default function DaySelector({ currentDate }) {
+export default function DaySelector() {
+  const { selectedDate, setSelectedDate } = useStore((state) => ({
+    selectedDate: state.selectedDate,
+    setSelectedDate: state.setSelectedDate
+  }))
+
+  const handleDateSelect = (date) => {
+    const dateString = date.toISOString().split('T')[0]
+    setSelectedDate(dateString)
+  }
+
   return (
-    <div className='flex flex-row justify-center gap-8'>
-      <button className='btn btn-primary'>
-        <Day date={new Date()} />
-      </button>
-      <button className='btn btn-primary'>
-        <Day date={getNextDay(1)} />
-      </button>
-      <button className='btn btn-primary'>
-        <Day date={getNextDay(2)} />
-      </button>
+    <div className='flex flex-row justify-evenly gap-4'>
+      {[...Array(7)].map((_, index) => {
+        const date = getNextDay(index)
+        const dateString = date.toISOString().split('T')[0]
+        const isSelected = dateString === selectedDate
+        
+        return (
+          <button
+            key={dateString}
+            onClick={() => handleDateSelect(date)}
+            className={`flex-1 ${isSelected ? 'bg-slate-600' : 'bg-slate-700/50 hover:bg-slate-700'} rounded-lg transition-colors duration-200`}
+          >
+            <Day date={date} isSelected={isSelected} />
+          </button>
+        )
+      })}
     </div>
   )
 }
@@ -45,11 +62,11 @@ const getMonthString = (month) => {
   return months[month]
 }
 
-function Day({ date }) {
+function Day({ date, isSelected }) {
   return (
-    <div className='bg-slate-200 rounded-lg p-2'>
-      <p className='text-lg block'>{getDayString(date.getDay())}</p>
-      <p className='text-sm'>
+    <div className='p-2 text-center'>
+      <p className='text-sm text-slate-300'>{getDayString(date.getDay())}</p>
+      <p className={`text-base font-medium ${isSelected ? 'text-white' : 'text-slate-200'}`}>
         {getMonthString(date.getMonth())} {date.getDate()}
       </p>
     </div>

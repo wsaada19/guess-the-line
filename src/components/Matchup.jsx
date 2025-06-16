@@ -8,12 +8,15 @@ import { MinusIcon, PlusIcon } from './ButtonSvg'
 
 export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
   const [line, setLine] = useState(0.0)
-  const { finalGuesses } = useStore((state) => state)
+  const { selectedDate, getGuessesForDate } = useStore((state) => ({
+    selectedDate: state.selectedDate,
+    getGuessesForDate: state.getGuessesForDate
+  }))
 
+  const dateGuesses = getGuessesForDate(selectedDate)
   const existingGuess = useMemo(() => {
-    return finalGuesses.find((guess) => guess.id === id)
-  }, [finalGuesses, id])
-
+    return dateGuesses.find((guess) => guess.id === id)
+  }, [dateGuesses, id])
 
   const isComplete = Boolean(existingGuess)
   const actualPoints = existingGuess?.actual || points
@@ -37,10 +40,14 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
     setLine(line - 0.5)
   }
 
+  const handleLineInputChange = (e) => {
+    const value = parseFloat(e.target.value) || 0
+    setLine(value)
+  }
+
   const submitLine = () => {
     submitGuess(line, actualPoints, id, home, away)
   }
-
 
   let border = ''
   if (isComplete) {
@@ -62,6 +69,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
           result={actualPoints}
           isComplete={isComplete}
           handleClick={increaseLine}
+          handleLineInputChange={handleLineInputChange}
           isHome
         />
         <Team
@@ -71,6 +79,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
           result={actualPoints}
           isComplete={isComplete}
           handleClick={decreaseLine}
+          handleLineInputChange={handleLineInputChange}
         />
       </div>
       {!isComplete && (
@@ -101,12 +110,12 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
   )
 }
 
-const Team = ({ name, logo, line, result, isComplete, isHome = false }) => {
+const Team = ({ name, logo, line, result, isComplete, isHome = false, handleLineInputChange }) => {
   const difference = getScoreFromGuess(line, result)
 
   return (
     <>
-      <p className='py-2 text-lg'>
+      <div className='py-2 text-lg'>
         <Image
           src={logo}
           width={32}
@@ -114,21 +123,27 @@ const Team = ({ name, logo, line, result, isComplete, isHome = false }) => {
           alt={name + ' logo'}
           className='inline-block pr-2'
         />
-        {name}
+        <span className='inline-block pr-2'>{name}</span>
         {!isComplete ? (
-          <div className=' inline-block w-11 px-1 bg-orange-500 shadow-sm shadow-slate-500 float-right text-right text-white rounded-sm'>
-            {isHome ? line * -1 : line}
+          <div className='inline-block w-11 px-1 bg-orange-500 shadow-sm shadow-slate-500 float-right text-white rounded-sm'>
+            <input
+              type="number"
+              step="0.5"
+              value={isHome ? line * -1 : line}
+              onChange={handleLineInputChange}
+              className="w-full bg-transparent text-white text-center border-none outline-none no-arrows"
+            />
           </div>
         ) : (
           <span
             className={`w-11 px-1 my-1 mr-3 ${
               difference > 0 ? 'bg-green-500' : 'bg-red-500'
-            } float-right shadow-sm shadow-slate-600 text-right text-white rounded-sm`}
+            } float-right shadow-sm shadow-slate-600 text-center text-white rounded-sm`}
           >
             {isHome ? line * -1 : line}
           </span>
         )}
-      </p>
+      </div>
     </>
   )
 }

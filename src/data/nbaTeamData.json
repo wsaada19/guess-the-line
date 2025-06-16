@@ -4,208 +4,238 @@
     "city": "Atlanta",
     "color": "#E03A3E",
     "logo": "/logos/ATL.svg",
-    "teamId": 1610612737
+    "teamId": 1610612737,
+    "isWNBA": false
   },
   {
     "name": "Celtics",
     "city": "Boston",
     "color": "#007A33",
     "logo": "/logos/BOS.svg",
-    "teamId": 1610612738
+    "teamId": 1610612738,
+    "isWNBA": false
   },
   {
     "name": "Nets",
     "city": "Brooklyn",
     "color": "#000000",
     "logo": "/logos/BKN.svg",
-    "teamId": 1610612751
+    "teamId": 1610612751,
+    "isWNBA": false
   },
   {
     "name": "Hornets",
     "city": "Charlotte",
     "color": "#1D1160",
     "logo": "/logos/CHA.svg",
-    "teamId": 1610612766
+    "teamId": 1610612766,
+    "isWNBA": false
   },
   {
     "name": "Bulls",
     "city": "Chicago",
     "color": "#CE1141",
     "logo": "/logos/CHI.svg",
-    "teamId": 1610612741
+    "teamId": 1610612741,
+    "isWNBA": false
   },
   {
     "name": "Cavaliers",
     "city": "Cleveland",
     "color": "#6F263D",
-    "logo": "/logos/CLE.svg"
+    "logo": "/logos/CLE.svg",
+    "isWNBA": false
   },
   {
     "name": "Mavericks",
     "city": "Dallas",
     "color": "#00538C",
     "logo": "/logos/DAL.svg",
-    "teamId": 1610612742
+    "teamId": 1610612742,
+    "isWNBA": false
   },
   {
     "name": "Nuggets",
     "city": "Denver",
     "color": "#0e2240",
     "logo": "/logos/DEN.svg",
-    "teamId": 1610612743
+    "teamId": 1610612743,
+    "isWNBA": false
   },
   {
     "name": "Pistons",
     "city": "Detroit",
     "color": "#c8102e",
     "logo": "/logos/DET.svg",
-    "teamId": 1610612765
+    "teamId": 1610612765,
+    "isWNBA": false
   },
   {
     "name": "Warriors",
     "city": "Golden State",
     "color": "#006BB6",
     "logo": "/logos/GSW.svg",
-    "teamId": 1610612744
+    "teamId": 1610612744,
+    "isWNBA": false
   },
   {
     "name": "Rockets",
     "city": "Houston",
     "color": "#CE1141",
     "logo": "/logos/HOU.svg",
-    "teamId": 1610612745
+    "teamId": 1610612745,
+    "isWNBA": false
   },
   {
     "name": "Pacers",
     "city": "Indiana",
     "color": "#FDB827",
     "logo": "/logos/IND.svg",
-    "teamId": 1610612754
+    "teamId": 1610612754,
+    "isWNBA": false
   },
   {
     "name": "Clippers",
     "city": "Los Angeles",
     "color": "#C8102E",
     "logo": "/logos/LAC.svg",
-    "teamId": 1610612746
+    "teamId": 1610612746,
+    "isWNBA": false
   },
   {
     "name": "Lakers",
     "city": "Los Angeles",
     "color": "#FDB827",
     "logo": "/logos/LAL.svg",
-    "teamId": 1610612747
+    "teamId": 1610612747,
+    "isWNBA": false
   },
   {
     "name": "Grizzlies",
     "city": "Memphis",
     "color": "#5D76A9",
     "logo": "/logos/MEM.svg",
-    "teamId": 1610612763
+    "teamId": 1610612763,
+    "isWNBA": false
   },
   {
     "name": "Heat",
     "city": "Miami",
     "color": "#98002E",
     "logo": "/logos/MIA.svg",
-    "teamId": 1610612748
+    "teamId": 1610612748,
+    "isWNBA": false
   },
   {
     "name": "Bucks",
     "city": "Milwaukee",
     "color": "#00471B",
     "logo": "/logos/MIL.svg",
-    "teamId": 1610612749
+    "teamId": 1610612749,
+    "isWNBA": false
   },
   {
     "name": "Timberwolves",
     "city": "Minnesota",
     "color": "#005083",
     "logo": "/logos/MIN.svg",
-    "teamId": 1610612750
+    "teamId": 1610612750,
+    "isWNBA": false
   },
   {
     "name": "Pelicans",
     "city": "New Orleans",
     "color": "#0C2340",
     "logo": "/logos/NOP.svg",
-    "teamId": 1610612740
+    "teamId": 1610612740,
+    "isWNBA": false
   },
   {
     "name": "Knicks",
     "city": "New York",
     "color": "#006BB6",
     "logo": "/logos/NYK.svg",
-    "teamId": 1610612752
+    "teamId": 1610612752,
+    "isWNBA": false
   },
   {
     "name": "Thunder",
     "city": "Oklahoma City",
     "color": "#007DC3",
     "logo": "/logos/OKC.svg",
-    "teamId": 1610612760
+    "teamId": 1610612760,
+    "isWNBA": false
   },
   {
     "name": "Magic",
     "city": "Orlando",
     "color": "#0077C9",
     "logo": "/logos/ORL.svg",
-    "teamId": 1610612753
+    "teamId": 1610612753,
+    "isWNBA": false
   },
   {
     "name": "76ers",
     "city": "Philadelphia",
     "color": "#006BB6",
     "logo": "/logos/PHI.svg",
-    "teamId": 1610612755
+    "teamId": 1610612755,
+    "isWNBA": false
   },
   {
     "name": "Suns",
     "city": "Phoenix",
     "color": "#E56020",
     "logo": "/logos/PHX.svg",
-    "teamId": 1610612756
+    "teamId": 1610612756,
+    "isWNBA": false
   },
   {
     "name": "Trail Blazers",
     "city": "Portland",
     "color": "#E03A3E",
     "logo": "/logos/POR.svg",
-    "teamId": 1610612757
+    "teamId": 1610612757,
+    "isWNBA": false
   },
   {
     "name": "Kings",
     "city": "Sacramento",
     "color": "#5A2D81",
     "logo": "/logos/SAC.svg",
-    "teamId": 1610612758
+    "teamId": 1610612758,
+    "isWNBA": false
   },
   {
     "name": "Spurs",
     "city": "San Antonio",
     "color": "#B6BFBF",
     "logo": "/logos/SAS.svg",
-    "teamId": 1610612759
+    "teamId": 1610612759,
+    "isWNBA": false
   },
   {
     "name": "Raptors",
     "city": "Toronto",
     "color": "#CE1141",
     "logo": "/logos/TOR.svg",
-    "teamId": 1610612761
+    "teamId": 1610612761,
+    "isWNBA": false
   },
   {
     "name": "Jazz",
     "city": "Utah",
     "color": "#00471B",
     "logo": "/logos/UTH.svg",
-    "teamId": 1610612762
+    "teamId": 1610612762,
+    "isWNBA": false
   },
   {
     "name": "Wizards",
     "city": "Washington",
     "color": "#E31837",
     "logo": "/logos/WSH.svg",
-    "teamId": 1610612764
+    "teamId": 1610612764,
+    "isWNBA": false
   }
 ]

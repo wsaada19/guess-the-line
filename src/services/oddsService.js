@@ -6,8 +6,9 @@ export const getLatestGames = async (sportKey = 'basketball_nba') => {
     const markets = 'spreads' // h2h | spreads | totals. Multiple can be specified if comma delimited
     const oddsFormat = 'decimal' // decimal | american
     const dateFormat = 'iso' // iso | unix
-    const startTime = getISO8601DateTimeInEST(3)
-    const endTime = getISO8601DateTimeInEST(6, 1)
+    // Get games from now until 7 days from now
+    const startTime = getISO8601DateTimeInEST(0)
+    const endTime = getISO8601DateTimeInEST(0, 7)
     const url = `https://api.the-odds-api.com/v4/sports/${sportKey}/odds?apiKey=${apiKey}&regions=${regions}&markets=${markets}&oddsFormat=${oddsFormat}&dateFormat=${dateFormat}&commenceTimeFrom=${startTime}&commenceTimeTo=${endTime}`
     const result = await fetch(url, {
       next: { revalidate: REVALIDATE }
@@ -16,13 +17,31 @@ export const getLatestGames = async (sportKey = 'basketball_nba') => {
     return json
   } catch (err) {
     console.log(err)
+    return []
   }
 }
 
 export const getAllGames = async () => {
   const nba = await getLatestGames();
   const wnba = await getLatestGames('basketball_wnba');
-  return [...nba, ...wnba];
+  const allGames = [...nba, ...wnba];
+  
+  // Group games by date
+  const gamesByDate = new Map();
+  
+  allGames.forEach(game => {
+    const gameDate = new Date(game.commence_time);
+    // Set time to midnight for consistent date comparison
+    gameDate.setHours(0, 0, 0, 0);
+    const dateKey = gameDate.toISOString().split('T')[0];
+    
+    if (!gamesByDate.has(dateKey)) {
+      gamesByDate.set(dateKey, []);
+    }
+    gamesByDate.get(dateKey).push(game);
+  });
+  
+  return gamesByDate;
 }
 
 function getISO8601DateTimeInEST(hour, day = 0) {

@@ -15,7 +15,8 @@
     "netRating": 12.5,
     "defRating": 96.3,
     "offRating": 108.9,
-    "pace": 97.4
+    "pace": 97.4,
+    "isWNBA": true
   },
   {
     "color": "#FFD100",
@@ -33,7 +34,8 @@
     "netRating": 9.8,
     "defRating": 91.9,
     "offRating": 101.7,
-    "pace": 92.84
+    "pace": 92.84,
+    "isWNBA": true
   },
   {
     "color": "#236192",
@@ -51,7 +53,8 @@
     "netRating": 12.9,
     "defRating": 90.6,
     "offRating": 103.4,
-    "pace": 95.67
+    "pace": 95.67,
+    "isWNBA": true
   },
   {
     "color": "#005DAA",
@@ -69,7 +72,8 @@
     "netRating": 5,
     "defRating": 94.2,
     "offRating": 99.2,
-    "pace": 98.29
+    "pace": 98.29,
+    "isWNBA": true
   },
   {
     "color": "#C4CED4",
@@ -87,7 +91,8 @@
     "netRating": 2.8,
     "defRating": 103,
     "offRating": 105.8,
-    "pace": 98.74
+    "pace": 98.74,
+    "isWNBA": true
   },
   {
     "color": "#E56020",
@@ -105,7 +110,8 @@
     "netRating": -4.8,
     "defRating": 103,
     "offRating": 98.3,
-    "pace": 97.92
+    "pace": 97.92,
+    "isWNBA": true
   },
   {
     "color": "#E03A3E",
@@ -123,7 +129,8 @@
     "netRating": -6.3,
     "defRating": 101.3,
     "offRating": 95,
-    "pace": 95.84
+    "pace": 95.84,
+    "isWNBA": true
   },
   {
     "color": "#522398",
@@ -141,7 +148,8 @@
     "netRating": -1.2,
     "defRating": 99.6,
     "offRating": 98.4,
-    "pace": 97.48
+    "pace": 97.48,
+    "isWNBA": true
   },
   {
     "color": "#002D62",
@@ -159,7 +167,8 @@
     "netRating": -9.1,
     "defRating": 109.5,
     "offRating": 100.3,
-    "pace": 96.53
+    "pace": 96.53,
+    "isWNBA": true
   },
   {
     "color": "#552582",
@@ -177,7 +186,8 @@
     "netRating": -8.5,
     "defRating": 105.2,
     "offRating": 96.7,
-    "pace": 96.85
+    "pace": 96.85,
+    "isWNBA": true
   },
   {
     "color": "#E31837",
@@ -195,7 +205,8 @@
     "netRating": -4.1,
     "defRating": 101.2,
     "offRating": 97.1,
-    "pace": 97.13
+    "pace": 97.13,
+    "isWNBA": true
   },
   {
     "color": "#C8102E",
@@ -213,7 +224,8 @@
     "netRating": -8.6,
     "defRating": 106.1,
     "offRating": 97.5,
-    "pace": 96.78
+    "pace": 96.78,
+    "isWNBA": true
   },
   {
     "city": "Golden State",
@@ -224,6 +236,7 @@
     "gamesPlayed": 16,
     "wins": 16,
     "losses": 0,
-    "winPercentage": 1
+    "winPercentage": 1,
+    "isWNBA": true
   }
 ]

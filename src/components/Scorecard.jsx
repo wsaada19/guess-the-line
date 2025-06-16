@@ -5,20 +5,21 @@ import GoalIcon from '@/components/ui/GoalIcon'
 
 export default function Scorecard({ remainingGuesses, score }) {
   return (
-    <div className='mb-4 md:mb-0 flex items-center justify-between gap-2 text-white bg-blue-200/30 rounded-lg px-4 py-2'>
+    <div className='flex items-center justify-between gap-2 text-white'>
       <Badge
-        className='items-center text-base border-none text-white'
+        className='items-center text-sm border-none text-white'
         variant='outline'
       >
-        <PuzzleIcon className='h-4.5 w-4.5 -translate-x-1 mr-1' />
-        {remainingGuesses} Guess{remainingGuesses === 1 ? '' : 'es'} Remaining
+      <GoalIcon className='h-4.5 w-4.5 mr-1 text-xlg' />
+        {score} points
       </Badge>
       <Badge
-        className='items-center text-base border-none text-white'
+        className='items-center text-sm border-none text-white'
         variant='outline'
       >
-        {score} points
-        <GoalIcon className='h-4.5 w-4.5 translate-x-1 text-xlg' />
+        <PuzzleIcon className='h-4.5 w-4.5 ml-2 mr-1' />
+                {remainingGuesses} guess{remainingGuesses === 1 ? '' : 'es'} remaining
+
       </Badge>
     </div>
   )

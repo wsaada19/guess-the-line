@@ -10,7 +10,7 @@ export default function Modal({ title, children, showModal, setShowModal }) {
         !showModal ? 'hidden' : ''
       } fixed z-50 inset-0 bg-gray-900 bg-opacity-80 overflow-y-auto h-full w-full px-4`}
     >
-      <div className='p-4 relative top-24 mx-auto shadow-xl rounded-md bg-white max-w-lg'>
+      <div className='p-4 md:p-8 relative top-24 mx-auto shadow-xl rounded-md bg-white max-w-lg'>
         <div className='flex items-center justify-between p-2 border-b border-gray-400 rounded-t'>
           <h3 className='font-semibold text-xl mb-1'>{title}</h3>
           <button

@@ -80,8 +80,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
-  background: #355993;
-  opacity: 0.9;
+  background: #35568b;
+  opacity: 0.7;
 }
 
 @layer base {

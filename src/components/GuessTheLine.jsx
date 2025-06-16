@@ -8,37 +8,62 @@ import { useStore } from "@/store/guessTheLine";
 import FinalScorePopup from "./FinalScorePopup";
 import Header from "./Header";
 import LoadingSpinner from "./ui/Loading";
+import DaySelector from "./DaySelector";
+import { useMemo } from "react";
 
-export const GuessTheLine = ({ matches }) => {
+export const GuessTheLine = ({ initialGames }) => {
   const {
-    score,
-    updateScore,
+    getCurrentScore,
     numberOfGuesses,
+    numberOfGuessesForMatches,
     addGuess,
     date,
     setDate,
     reset,
+    resetGuessesForCurrentDate,
     selectedSport,
     setSelectedSport,
+    setGamesByDate,
+    getGamesForSelectedDate,
+    selectedDate,
+    setSelectedDate,
   } = useStore((state) => ({
-    score: state.score,
-    updateScore: state.updateScore,
+    getCurrentScore: state.getCurrentScore,
     numberOfGuesses: state.numberOfGuesses,
+    numberOfGuessesForMatches: state.numberOfGuessesForMatches,
     addGuess: state.addGuess,
     date: state.date,
     setDate: state.setDate,
     reset: state.reset,
+    resetGuessesForCurrentDate: state.resetGuessesForCurrentDate,
     selectedSport: state.selectedSport,
     setSelectedSport: state.setSelectedSport,
-    finalGuesses: state.finalGuesses,
+    setGamesByDate: state.setGamesByDate,
+    getGamesForSelectedDate: state.getGamesForSelectedDate,
+    selectedDate: state.selectedDate,
+    setSelectedDate: state.setSelectedDate,
   }));
 
   const [bannerOpacity, setBannerOpacity] = useState("0");
   const [bannerScore, setBannerScore] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    // Initialize games from server data
+    const gamesMap = new Map(initialGames);
+    setGamesByDate(gamesMap);
+  }, [initialGames, setGamesByDate]);
+
+  // Ensure selectedDate is set when component loads
+  useEffect(() => {
+    if (!selectedDate) {
+      const today = new Date().toISOString().split('T')[0];
+      setSelectedDate(today);
+    }
+  }, [selectedDate, setSelectedDate]);
 
   const handleReset = () => {
-    reset();
+    resetGuessesForCurrentDate();
     setDate(new Date());
   };
 
@@ -55,7 +80,6 @@ export const GuessTheLine = ({ matches }) => {
   const submitGuess = (guess, actual, id, home, away) => {
     addGuess({ guess, actual, id, home, away });
     const points = getScoreFromGuess(guess, actual);
-    updateScore(points);
     showBanner(points);
   };
 
@@ -65,55 +89,74 @@ export const GuessTheLine = ({ matches }) => {
       handleReset();
       setDate(currentDate);
     }
-    setIsLoading(false);
   }, [date, reset, setDate]);
 
-  const hasMatches = matches && matches.length > 0;
-  const filteredMatches = hasMatches
-    ? matches.filter((match) => {
-        if (selectedSport === "both") return true;
-        const isWNBA =
-          match.home.logo.includes("wnba") || match.away.logo.includes("wnba");
-        return selectedSport === "wnba" ? isWNBA : !isWNBA;
-      })
-    : [];
+  const filteredMatches = useMemo(() => {
+    const matches = getGamesForSelectedDate();
+    // console.log("matches", matches);
+    // console.log("selectedSport", selectedSport);
+    // console.log("selectedDate", selectedDate);
+    return matches.filter((match) => {
+      if (!match) return false;
+      if (selectedSport === "both") return true;
+      const isWNBA =
+        match?.home?.isWNBA || match?.away?.isWNBA;
+      return selectedSport === "wnba" ? isWNBA : !isWNBA;
+    });
+  }, [selectedSport, selectedDate, getGamesForSelectedDate]);
+
+  const remainingGuesses = filteredMatches.length - numberOfGuessesForMatches(filteredMatches.map(match => match.id));
 
   return (
-    <div className="max-w-6xl mx-auto px-8">
+    <div className="max-w-5xl mx-auto px-8">
       <Header handleReset={handleReset} />
-      <hr className="mb-4 border-white" />
-      <FinalScorePopup matchesLength={filteredMatches.length} />
-      {hasMatches && (
-        <Scorecard
-          remainingGuesses={filteredMatches.length - numberOfGuesses()}
-          score={score}
-        />
-      )}
-      <div className="flex justify-end mt-4">
-        <select
-          value={selectedSport}
-          onChange={handleSportChange}
-          className="bg-white text-black px-3 py-1 rounded border border-white focus:outline-none focus:border-blue-500"
-        >
-          <option value="both">All</option>
-          <option value="nba">NBA</option>
-          <option value="wnba">WNBA</option>
-        </select>
+
+      <div className="bg-slate-800/50 rounded-lg p-4 mb-6">
+        <DaySelector />
+
+        <div className="mt-4 pt-4 border-t border-slate-700">
+          <div className="flex items-center justify-between">
+            <Scorecard
+              remainingGuesses={remainingGuesses}
+              score={getCurrentScore()}
+            />
+            <select
+              value={selectedSport}
+              onChange={handleSportChange}
+              className="bg-slate-700 text-white px-3 font-semibold py-2 rounded border border-slate-600 focus:outline-none focus:border-slate-500"
+            >
+              <option value="both">All</option>
+              <option value="nba">NBA</option>
+              <option value="wnba">WNBA</option>
+            </select>
+          </div>
+        </div>
       </div>
 
-      {hasMatches && !isLoading && (
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-x-6">
-          {filteredMatches.map((match) => (
-            <Matchup
-              home={match.home}
-              away={match.away}
-              points={match.points}
-              key={match.id}
-              id={match.id}
-              gameTime={match.gameTime}
-              submitGuess={submitGuess}
-            />
-          ))}
+      {filteredMatches.length > 0 ? (
+        <>
+          <FinalScorePopup matchesLength={filteredMatches.length} />
+          {!isLoading && (
+            <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-x-6">
+              {filteredMatches.map((match) => (
+                <Matchup
+                  home={match.home}
+                  away={match.away}
+                  points={match.points}
+                  key={match.id}
+                  id={match.id}
+                  gameTime={match.gameTime}
+                  submitGuess={submitGuess}
+                />
+              ))}
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="text-center py-12 bg-slate-800/50 rounded-lg mt-6">
+          <p className="text-xl text-slate-300">
+            No games available for this date
+          </p>
         </div>
       )}
 
