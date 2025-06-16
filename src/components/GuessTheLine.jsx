@@ -49,8 +49,31 @@ export const GuessTheLine = ({ initialGames }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Initialize games from server data
-    const gamesMap = new Map(initialGames);
+    // Initialize games from server data and group by date on client side
+    const gamesMap = new Map();
+    
+    initialGames.forEach(game => {
+      // Convert game time to local date for grouping
+      const gameDate = new Date(game.gameTime);
+      const localGameDate = new Date(
+        gameDate.getFullYear(),
+        gameDate.getMonth(),
+        gameDate.getDate(),
+        gameDate.getHours(),
+        gameDate.getMinutes(),
+        gameDate.getSeconds()
+      );
+      
+      // Set time to midnight for consistent date comparison
+      localGameDate.setHours(0, 0, 0, 0);
+      const dateKey = localGameDate.toISOString().split('T')[0];
+      
+      if (!gamesMap.has(dateKey)) {
+        gamesMap.set(dateKey, []);
+      }
+      gamesMap.get(dateKey).push(game);
+    });
+    
     setGamesByDate(gamesMap);
   }, [initialGames, setGamesByDate]);
 

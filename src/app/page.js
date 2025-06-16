@@ -4,11 +4,11 @@ import { getTeamData } from '@/services/teamData'
 import testData from '../data/testData.json'
 
 export default async function Home() {
-  // Fetch games server-side
+  // Fetch games server-side but don't group by date
   const gamesByDate = await getAllGames()
   
-  // Transform the data for each date
-  const transformedGamesByDate = new Map()
+  // Transform the data but keep all games in a flat array
+  const allTransformedGames = []
   
   for (const [date, games] of gamesByDate.entries()) {
     const transformedGames = games.map(matchup => {
@@ -33,11 +33,11 @@ export default async function Home() {
         gameTime: localTime.toISOString()
       };
     });
-    transformedGamesByDate.set(date, transformedGames)
+    allTransformedGames.push(...transformedGames);
   }
 
   // If no games were found, use test data
-  if (transformedGamesByDate.size === 0) {
+  if (allTransformedGames.length === 0) {
     const testGames = testData.map(matchup => {
       // Convert server time to local timezone for display
       const serverTime = new Date(matchup.commence_time);
@@ -60,16 +60,12 @@ export default async function Home() {
         gameTime: localTime.toISOString()
       };
     });
-    // Use today's date for test data
-    const today = new Date().toISOString().split('T')[0]
-    transformedGamesByDate.set(today, testGames)
+    allTransformedGames.push(...testGames);
   }
 
-  // Convert Map to array for serialization
-  const serializedGames = Array.from(transformedGamesByDate.entries())
   return (
     <main className='min-h-screen items-center py-6 md:px-12'>
-      <GuessTheLine initialGames={serializedGames} />
+      <GuessTheLine initialGames={allTransformedGames} />
     </main>
   )
 }
