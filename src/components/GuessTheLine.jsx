@@ -26,6 +26,7 @@ export const GuessTheLine = ({ initialGames }) => {
     getGamesForSelectedDate,
     selectedDate,
     setSelectedDate,
+    gamesByDate,
   } = useStore((state) => ({
     getCurrentScore: state.getCurrentScore,
     numberOfGuesses: state.numberOfGuesses,
@@ -41,6 +42,7 @@ export const GuessTheLine = ({ initialGames }) => {
     getGamesForSelectedDate: state.getGamesForSelectedDate,
     selectedDate: state.selectedDate,
     setSelectedDate: state.setSelectedDate,
+    gamesByDate: state.gamesByDate,
   }));
 
   const [bannerOpacity, setBannerOpacity] = useState("0");
@@ -128,10 +130,8 @@ export const GuessTheLine = ({ initialGames }) => {
   }, [date, reset, setDate]);
 
   const filteredMatches = useMemo(() => {
-    const matches = getGamesForSelectedDate();
-    // console.log("matches", matches);
-    // console.log("selectedSport", selectedSport);
-    // console.log("selectedDate", selectedDate);
+    const matches = gamesByDate.get(selectedDate);
+    if (!matches) return [];
     return matches.filter((match) => {
       if (!match) return false;
       if (selectedSport === "both") return true;
@@ -139,7 +139,7 @@ export const GuessTheLine = ({ initialGames }) => {
         match?.home?.isWNBA || match?.away?.isWNBA;
       return selectedSport === "wnba" ? isWNBA : !isWNBA;
     });
-  }, [selectedSport, selectedDate, getGamesForSelectedDate]);
+  }, [selectedSport, selectedDate, gamesByDate]);
 
   const remainingGuesses = filteredMatches.length - numberOfGuessesForMatches(filteredMatches.map(match => match.id));
 
