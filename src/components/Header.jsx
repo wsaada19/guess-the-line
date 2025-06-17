@@ -28,8 +28,8 @@ export default function Header({ handleReset }) {
   return (
     <>
       <header className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-left mb-1 text-white flex items-center">
-        <Image className="inline-block brightness-200" src="/logo.png" alt="Guess the Lines" width={48} height={48} />
+        <h1 className="text-xl md:text-3xl font-bold text-left mb-1 text-white flex items-center -translate-x-2">
+        <Image className="inline-block brightness-200 w-8 md:w-12" src="/logo.png" alt="Guess the Lines" width={48} height={48} />
           Guess the Lines
         </h1>
         <span className="flex gap-4">
@@ -47,7 +47,7 @@ export default function Header({ handleReset }) {
           </button>
         </span>
       </header>
-      <p className='font-semibold text-sm mb-4 text-white'>
+      <p className='font-semibold text-sm mb-1 text-white'>
         {formatDate(selectedDate)}
       </p>
       <HelpModal showModal={showHelpModal} setShowModal={setShowHelpModal} />
