@@ -8,7 +8,7 @@ export const getLatestGames = async (sportKey = 'basketball_nba') => {
     const dateFormat = 'iso' // iso | unix
     // Get games from now until 7 days from now
     const startTime = getISO8601DateTimeInEST(0)
-    const endTime = getISO8601DateTimeInEST(0, 7)
+    const endTime = getISO8601DateTimeInEST(0, 5)
     const url = `https://api.the-odds-api.com/v4/sports/${sportKey}/odds?apiKey=${apiKey}&regions=${regions}&markets=${markets}&oddsFormat=${oddsFormat}&dateFormat=${dateFormat}&commenceTimeFrom=${startTime}&commenceTimeTo=${endTime}`
     const result = await fetch(url, {
       next: { revalidate: REVALIDATE }

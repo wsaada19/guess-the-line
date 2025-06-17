@@ -35,7 +35,7 @@ export default function DaySelector() {
 
   return (
     <div className='flex flex-row justify-evenly gap-4'>
-      {[...Array(7)].map((_, index) => {
+      {[...Array(5)].map((_, index) => {
         const date = getNextDay(index)
         const dateString = getLocalDateString(date)
         const isSelected = dateString === selectedDate
