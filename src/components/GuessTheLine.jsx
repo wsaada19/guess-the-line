@@ -151,7 +151,7 @@ export const GuessTheLine = ({ initialGames }) => {
       <div className="bg-slate-800/50 rounded-lg p-4 mb-6">
         <DaySelector />
 
-        <div className="mt-4 pt-4 border-t border-slate-700">
+        <div className="mt-2 pt-4 border-t border-slate-700">
           <div className="flex items-center justify-between">
             <Scorecard
               remainingGuesses={remainingGuesses}
