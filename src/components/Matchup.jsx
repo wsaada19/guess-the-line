@@ -98,7 +98,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
       {!isComplete && (
         <button
           onClick={submitLine}
-          className='col-span-2 gap-x-2 py-1 mx-4 md:mx-2 lg:mx-4 mt-2 bg-orange-500 text-white rounded-sm shadow-sm shadow-slate-500'
+          className='col-span-2 gap-x-2 py-1 mx-4 md:mx-2 lg:mx-4 mt-2 bg-slate-600 hover:bg-slate-700 text-white rounded-sm shadow-sm shadow-slate-500 transition-colors duration-200'
         >
           Submit
         </button>
@@ -125,20 +125,18 @@ const Team = ({ name, logo, line, result, isComplete, isHome = false, handleLine
         />
         <span className='inline-block pr-2'>{name}</span>
         {!isComplete ? (
-          <div className='inline-block w-11 px-1 bg-orange-500 shadow-sm shadow-slate-500 float-right text-white rounded-sm'>
+          <div className='inline-block w-11 px-1 bg-slate-200 shadow-sm shadow-slate-300 float-right text-slate-800 rounded-sm'>
             <input
               type="number"
               step="0.5"
               value={isHome ? line * -1 : line}
               onChange={handleLineInputChange}
-              className="w-full bg-transparent text-white text-center border-none outline-none no-arrows"
+              className="w-full bg-transparent text-slate-800 text-center border-none outline-none no-arrows"
             />
           </div>
         ) : (
           <span
-            className={`w-11 px-1 my-1 mr-3 ${
-              difference > 0 ? 'bg-green-500' : 'bg-red-500'
-            } float-right shadow-sm shadow-slate-600 text-center text-white rounded-sm`}
+            className={`w-11 px-1 my-1 mr-3 bg-slate-200 float-right shadow-sm shadow-slate-300 text-center text-slate-800 rounded-sm`}
           >
             {isHome ? line * -1 : line}
           </span>

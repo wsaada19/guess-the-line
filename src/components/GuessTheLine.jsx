@@ -14,7 +14,6 @@ import { useMemo } from "react";
 export const GuessTheLine = ({ initialGames }) => {
   const {
     getCurrentScore,
-    numberOfGuesses,
     numberOfGuessesForMatches,
     addGuess,
     date,

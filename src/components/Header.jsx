@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import HelpModal from "./HelpModal";
 import { useStore } from "@/store/guessTheLine";
+import Image from "next/image";
 
 export default function Header({ handleReset }) {
   const [showHelpModal, setShowHelpModal] = useState(false);
@@ -27,8 +28,9 @@ export default function Header({ handleReset }) {
   return (
     <>
       <header className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-left mb-1 text-white">
-          Guess the Line
+        <h1 className="text-3xl font-bold text-left mb-1 text-white flex items-center">
+        <Image className="inline-block brightness-200" src="/logo.png" alt="Guess the Lines" width={48} height={48} />
+          Guess the Lines
         </h1>
         <span className="flex gap-4">
           <button
