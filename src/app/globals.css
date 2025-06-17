@@ -80,7 +80,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
-  background: #35568b;
+
+  background: linear-gradient(to bottom, #35568b, #547ab8);
   opacity: 0.7;
 }
 

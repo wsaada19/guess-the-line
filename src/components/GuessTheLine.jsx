@@ -147,10 +147,10 @@ export const GuessTheLine = ({ initialGames }) => {
     <div className="max-w-5xl mx-auto px-8">
       <Header handleReset={handleReset} />
 
-      <div className="bg-slate-800/50 rounded-lg p-4 mb-6">
+      <div className="bg-slate-800/50 rounded-lg p-4 mb-4">
         <DaySelector />
 
-        <div className="pt-4 border-t border-slate-700">
+        <div className="pt-4">
           <div className="flex items-center justify-between">
             <Scorecard
               remainingGuesses={remainingGuesses}
