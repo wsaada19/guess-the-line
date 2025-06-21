@@ -4,7 +4,6 @@ import { getTeamData } from '@/services/teamData'
 import testData from '../data/testData.json'
 
 export default async function Home() {
-  // Fetch games server-side but don't group by date
   const gamesByDate = await getAllGames()
   
   // Transform the data but keep all games in a flat array
@@ -27,6 +26,7 @@ export default async function Home() {
 
   // If no games were found, use test data
   if (allTransformedGames.length === 0) {
+    const date = new Date();
     const testGames = testData.map(matchup => {
       return {
         home: getTeamData(matchup.home_team),
@@ -35,7 +35,7 @@ export default async function Home() {
           outcome => outcome.name === matchup.home_team
         )?.point || 0,
         id: matchup.id,
-        gameTime: matchup.commence_time // Pass raw server time
+        gameTime: date.toISOString()
       };
     });
     allTransformedGames.push(...testGames);

@@ -30,7 +30,6 @@ export const getAllGames = async () => {
   const gamesByDate = new Map();
   
   allGames.forEach(game => {
-    // Convert server time to local timezone
     const serverTime = new Date(game.commence_time);
     const localGameDate = new Date(
       serverTime.getFullYear(),
