@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { getScoreFromGuess } from '@/services/gameLogic'
 import { useStore } from '@/store/guessTheLine'
 import { getTime } from '@/services/timeService'
-import { MinusIcon, PlusIcon } from './ButtonSvg'
+import { MinusIcon, PlusIcon } from './ui/ButtonSvg'
 
 export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
   const [line, setLine] = useState(0.0)

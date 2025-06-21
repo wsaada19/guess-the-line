@@ -127,7 +127,7 @@ export const GuessTheLine = ({ initialGames }) => {
       if (!match) return false;
       if (selectedSport === "both") return true;
       const isWNBA =
-        match?.home?.isWNBA || match?.away?.isWNBA;
+        match?.home?.sportKey === "basketball_wnba" || match?.away?.sportKey === "basketball_wnba";
       return selectedSport === "wnba" ? isWNBA : !isWNBA;
     });
   }, [selectedSport, selectedDate, gamesByDate]);
