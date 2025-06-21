@@ -17,24 +17,8 @@ vi.mock('@/components/Header', () => ({
   default: () => <div data-testid="header">Guess The Line</div>
 }));
 
-vi.mock('@/components/Scorecard', () => ({
-  default: () => <div data-testid="scorecard">Scorecard</div>
-}));
-
 vi.mock('@/components/FinalScorePopup', () => ({
   default: () => <div data-testid="final-score-popup">Final Score</div>
-}));
-
-vi.mock('@/components/PointsBanner', () => ({
-  default: () => <div data-testid="points-banner">Points Banner</div>
-}));
-
-vi.mock('@/components/DaySelector', () => ({
-  default: () => <div data-testid="day-selector">Day Selector</div>
-}));
-
-vi.mock('@/components/ui/Loading', () => ({
-  default: () => <div data-testid="loading">Loading...</div>
 }));
 
 // Create a date for today
