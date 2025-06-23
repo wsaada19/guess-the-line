@@ -126,9 +126,7 @@ export const GuessTheLine = ({ initialGames }) => {
     return matches.filter((match) => {
       if (!match) return false;
       if (selectedSport === "both") return true;
-      const isWNBA =
-        match?.home?.sportKey === "basketball_wnba" || match?.away?.sportKey === "basketball_wnba";
-      return selectedSport === "wnba" ? isWNBA : !isWNBA;
+      return selectedSport === match.home?.sportKey || selectedSport === match.away?.sportKey;
     });
   }, [selectedSport, selectedDate, gamesByDate]);
 
@@ -153,8 +151,9 @@ export const GuessTheLine = ({ initialGames }) => {
               className="bg-slate-700 text-white px-3 font-semibold py-2 rounded border border-slate-600 focus:outline-none focus:border-slate-500"
             >
               <option value="both">All</option>
-              <option value="nba">NBA</option>
-              <option value="wnba">WNBA</option>
+              <option value="basketball_nba">NBA</option>
+              <option value="basketball_wnba">WNBA</option>
+              <option value="baseball_mlb">MLB</option>
             </select>
           </div>
         </div>

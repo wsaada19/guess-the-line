@@ -1,0 +1,242 @@
+[
+  {
+    "name": "Orioles",
+    "city": "Baltimore",
+    "color": "#DF4601",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/110.svg",
+    "teamId": 110,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Red Sox",
+    "city": "Boston",
+    "color": "#BD3039",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/111.svg",
+    "teamId": 111,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Yankees",
+    "city": "New York",
+    "color": "#003087",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/147.svg",
+    "teamId": 147,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Rays",
+    "city": "Tampa Bay",
+    "color": "#092C5C",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/139.svg",
+    "teamId": 139,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Blue Jays",
+    "city": "Toronto",
+    "color": "#134A8E",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/141.svg",
+    "teamId": 141,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "White Sox",
+    "city": "Chicago",
+    "color": "#27251F",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/145.svg",
+    "teamId": 145,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Guardians",
+    "city": "Cleveland",
+    "color": "#E31937",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/114.svg",
+    "teamId": 114,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Tigers",
+    "city": "Detroit",
+    "color": "#0C2340",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/116.svg",
+    "teamId": 116,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Royals",
+    "city": "Kansas City",
+    "color": "#004687",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/118.svg",
+    "teamId": 118,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Twins",
+    "city": "Minnesota",
+    "color": "#002B5C",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/142.svg",
+    "teamId": 142,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Athletics",
+    "city": "Oakland",
+    "color": "#003831",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/133.svg",
+    "teamId": 133,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Astros",
+    "city": "Houston",
+    "color": "#EB6E1F",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/117.svg",
+    "teamId": 117,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Angels",
+    "city": "Los Angeles",
+    "color": "#BA0021",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/108.svg",
+    "teamId": 108,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Mariners",
+    "city": "Seattle",
+    "color": "#0C2C56",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/136.svg",
+    "teamId": 136,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Rangers",
+    "city": "Texas",
+    "color": "#C0111F",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/140.svg",
+    "teamId": 140,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Braves",
+    "city": "Atlanta",
+    "color": "#CE1141",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/144.svg",
+    "teamId": 144,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Marlins",
+    "city": "Miami",
+    "color": "#00A3E0",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/146.svg",
+    "teamId": 146,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Mets",
+    "city": "New York",
+    "color": "#002D72",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/121.svg",
+    "teamId": 121,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Phillies",
+    "city": "Philadelphia",
+    "color": "#E81828",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/143.svg",
+    "teamId": 143,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Nationals",
+    "city": "Washington",
+    "color": "#AB0003",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/120.svg",
+    "teamId": 120,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Cubs",
+    "city": "Chicago",
+    "color": "#0E3386",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/112.svg",
+    "teamId": 112,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Reds",
+    "city": "Cincinnati",
+    "color": "#C6011F",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/113.svg",
+    "teamId": 113,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Brewers",
+    "city": "Milwaukee",
+    "color": "#12284B",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/158.svg",
+    "teamId": 158,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Pirates",
+    "city": "Pittsburgh",
+    "color": "#FDB827",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/134.svg",
+    "teamId": 134,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Cardinals",
+    "city": "St. Louis",
+    "color": "#C41E3A",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/138.svg",
+    "teamId": 138,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Diamondbacks",
+    "city": "Arizona",
+    "color": "#A71930",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/109.svg",
+    "teamId": 109,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Rockies",
+    "city": "Colorado",
+    "color": "#33006F",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/115.svg",
+    "teamId": 115,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Dodgers",
+    "city": "Los Angeles",
+    "color": "#005A9C",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/119.svg",
+    "teamId": 119,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Padres",
+    "city": "San Diego",
+    "color": "#2F241D",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/135.svg",
+    "teamId": 135,
+    "sportKey": "baseball_mlb"
+  },
+  {
+    "name": "Giants",
+    "city": "San Francisco",
+    "color": "#FD5A1E",
+    "logo": "https://www.mlbstatic.com/team-logos/team-cap-on-light/137.svg",
+    "teamId": 137,
+    "sportKey": "baseball_mlb"
+  }
+]

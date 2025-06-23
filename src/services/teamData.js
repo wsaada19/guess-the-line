@@ -1,10 +1,9 @@
-import teams from '../data/nbaTeamData.json'
+import nbaTeams from '../data/nbaTeamData.json'
 import wnbaTeams from '../data/wnbaTeamData.json'
+import mlbTeams from '../data/mlbTeamData.json'
+
+const allTeams = [...nbaTeams, ...mlbTeams, ...wnbaTeams]
 
 export const getTeamData = (teamName) => {
-  const result = teams.find((team) => `${team.city} ${team.name}` === teamName)
-  if (!result) {
-    return wnbaTeams.find((team) => `${team.city} ${team.name}` === teamName)
-  }
-  return result
+  return allTeams.find((team) => `${team.city} ${team.name}` === teamName)
 }

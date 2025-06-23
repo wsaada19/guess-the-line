@@ -24,7 +24,8 @@ export const getLatestGames = async (sportKey = 'basketball_nba') => {
 export const getAllGames = async () => {
   const nba = await getLatestGames();
   const wnba = await getLatestGames('basketball_wnba');
-  const allGames = [...nba, ...wnba];
+  const mlb = await getLatestGames('baseball_mlb');
+  const allGames = [...nba, ...wnba, ...mlb];
   
   // Group games by date
   const gamesByDate = new Map();
