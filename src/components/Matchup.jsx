@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { getScoreFromGuess } from '@/services/gameLogic'
 import { useStore } from '@/store/guessTheLine'
 import { getTime } from '@/services/timeService'
-import { MinusIcon, PlusIcon } from './ButtonSvg'
+import { MinusIcon, PlusIcon } from './ui/ButtonSvg'
 
 export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
   const [line, setLine] = useState(0.0)
@@ -31,14 +31,6 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
       return 'Even'
     }
   }, [line, home, away, actualPoints, isComplete])
-
-  const increaseLine = () => {
-    setLine(line + 0.5)
-  }
-
-  const decreaseLine = () => {
-    setLine(line - 0.5)
-  }
 
   const handleLineInputChange = (e) => {
     const value = parseFloat(e.target.value) || 0
@@ -68,7 +60,6 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
           line={line}
           result={actualPoints}
           isComplete={isComplete}
-          handleClick={increaseLine}
           handleLineInputChange={handleLineInputChange}
           isHome
         />
@@ -78,16 +69,15 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
           line={line}
           result={actualPoints}
           isComplete={isComplete}
-          handleClick={decreaseLine}
           handleLineInputChange={handleLineInputChange}
         />
       </div>
       {!isComplete && (
         <div className='col-span-1 m-auto'>
-          <button className='block mb-4' onClick={increaseLine}>
+          <button className='block mb-4' onClick={() => {setLine(line + 0.5)}}>
             <PlusIcon />
           </button>
-          <button className='block' onClick={decreaseLine}>
+          <button className='block' onClick={() => {setLine(line - 0.5)}}>
             <MinusIcon />
           </button>
         </div>
@@ -98,7 +88,7 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
       {!isComplete && (
         <button
           onClick={submitLine}
-          className='col-span-2 gap-x-2 py-1 mx-4 md:mx-2 lg:mx-4 mt-2 bg-slate-600 hover:bg-slate-700 text-white rounded-sm shadow-sm shadow-slate-500 transition-colors duration-200'
+          className='text-sm md:text-base col-span-2 gap-x-2 py-1 mx-4 md:mx-2 lg:mx-4 mt-2 bg-orange-500 hover:bg-slate-700 text-white rounded-sm shadow-sm shadow-orange-200 transition-colors duration-200'
         >
           Submit
         </button>
@@ -111,8 +101,6 @@ export const Matchup = ({ home, away, points, id, submitGuess, gameTime }) => {
 }
 
 const Team = ({ name, logo, line, result, isComplete, isHome = false, handleLineInputChange }) => {
-  const difference = getScoreFromGuess(line, result)
-
   return (
     <>
       <div className='py-2 text-lg'>

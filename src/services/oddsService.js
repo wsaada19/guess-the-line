@@ -24,13 +24,13 @@ export const getLatestGames = async (sportKey = 'basketball_nba') => {
 export const getAllGames = async () => {
   const nba = await getLatestGames();
   const wnba = await getLatestGames('basketball_wnba');
-  const allGames = [...nba, ...wnba];
+  const mlb = await getLatestGames('baseball_mlb');
+  const allGames = [...nba, ...wnba, ...mlb];
   
   // Group games by date
   const gamesByDate = new Map();
   
   allGames.forEach(game => {
-    // Convert server time to local timezone
     const serverTime = new Date(game.commence_time);
     const localGameDate = new Date(
       serverTime.getFullYear(),

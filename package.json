@@ -12,7 +12,6 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.0.2",
     "@vercel/analytics": "^1.1.2",
     "axios": "^1.5.1",
     "class-variance-authority": "^0.7.0",

@@ -23,7 +23,6 @@ export const GuessTheLine = ({ initialGames }) => {
     selectedSport,
     setSelectedSport,
     setGamesByDate,
-    getGamesForSelectedDate,
     selectedDate,
     setSelectedDate,
     gamesByDate,
@@ -39,7 +38,6 @@ export const GuessTheLine = ({ initialGames }) => {
     selectedSport: state.selectedSport,
     setSelectedSport: state.setSelectedSport,
     setGamesByDate: state.setGamesByDate,
-    getGamesForSelectedDate: state.getGamesForSelectedDate,
     selectedDate: state.selectedDate,
     setSelectedDate: state.setSelectedDate,
     gamesByDate: state.gamesByDate,
@@ -50,11 +48,9 @@ export const GuessTheLine = ({ initialGames }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Initialize games from server data and group by date on client side
     const gamesMap = new Map();
     
     initialGames.forEach(game => {
-      // Convert raw server time to local timezone for grouping
       const serverTime = new Date(game.gameTime);
       const localGameDate = new Date(
         serverTime.getFullYear(),
@@ -65,7 +61,6 @@ export const GuessTheLine = ({ initialGames }) => {
         serverTime.getSeconds()
       );
       
-      // Set time to midnight for consistent date comparison
       localGameDate.setHours(0, 0, 0, 0);
       const dateKey = localGameDate.toISOString().split('T')[0];
       
@@ -105,10 +100,6 @@ export const GuessTheLine = ({ initialGames }) => {
     setDate(new Date());
   };
 
-  const handleSportChange = (e) => {
-    setSelectedSport(e.target.value);
-  };
-
   const showBanner = (points, duration = 4000) => {
     setBannerScore(points);
     setBannerOpacity("100");
@@ -135,9 +126,7 @@ export const GuessTheLine = ({ initialGames }) => {
     return matches.filter((match) => {
       if (!match) return false;
       if (selectedSport === "both") return true;
-      const isWNBA =
-        match?.home?.isWNBA || match?.away?.isWNBA;
-      return selectedSport === "wnba" ? isWNBA : !isWNBA;
+      return selectedSport === match.home?.sportKey || selectedSport === match.away?.sportKey;
     });
   }, [selectedSport, selectedDate, gamesByDate]);
 
@@ -158,12 +147,13 @@ export const GuessTheLine = ({ initialGames }) => {
             />
             <select
               value={selectedSport}
-              onChange={handleSportChange}
+              onChange={(e) => setSelectedSport(e.target.value)}
               className="bg-slate-700 text-white px-3 font-semibold py-2 rounded border border-slate-600 focus:outline-none focus:border-slate-500"
             >
               <option value="both">All</option>
-              <option value="nba">NBA</option>
-              <option value="wnba">WNBA</option>
+              <option value="basketball_nba">NBA</option>
+              <option value="basketball_wnba">WNBA</option>
+              <option value="baseball_mlb">MLB</option>
             </select>
           </div>
         </div>
@@ -190,7 +180,7 @@ export const GuessTheLine = ({ initialGames }) => {
         </>
       ) : (
         <div className="text-center py-12 bg-slate-800/50 rounded-lg mt-6">
-          <p className="text-xl text-slate-300">
+          <p className="text-base md:text-xl text-slate-300">
             No games available for this date
           </p>
         </div>

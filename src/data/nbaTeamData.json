@@ -5,7 +5,7 @@
     "color": "#E03A3E",
     "logo": "/logos/ATL.svg",
     "teamId": 1610612737,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Celtics",
@@ -13,7 +13,7 @@
     "color": "#007A33",
     "logo": "/logos/BOS.svg",
     "teamId": 1610612738,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Nets",
@@ -21,7 +21,7 @@
     "color": "#000000",
     "logo": "/logos/BKN.svg",
     "teamId": 1610612751,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Hornets",
@@ -29,7 +29,7 @@
     "color": "#1D1160",
     "logo": "/logos/CHA.svg",
     "teamId": 1610612766,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Bulls",
@@ -37,14 +37,14 @@
     "color": "#CE1141",
     "logo": "/logos/CHI.svg",
     "teamId": 1610612741,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Cavaliers",
     "city": "Cleveland",
     "color": "#6F263D",
     "logo": "/logos/CLE.svg",
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Mavericks",
@@ -52,7 +52,7 @@
     "color": "#00538C",
     "logo": "/logos/DAL.svg",
     "teamId": 1610612742,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Nuggets",
@@ -60,7 +60,7 @@
     "color": "#0e2240",
     "logo": "/logos/DEN.svg",
     "teamId": 1610612743,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Pistons",
@@ -68,7 +68,7 @@
     "color": "#c8102e",
     "logo": "/logos/DET.svg",
     "teamId": 1610612765,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Warriors",
@@ -76,7 +76,7 @@
     "color": "#006BB6",
     "logo": "/logos/GSW.svg",
     "teamId": 1610612744,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Rockets",
@@ -84,7 +84,7 @@
     "color": "#CE1141",
     "logo": "/logos/HOU.svg",
     "teamId": 1610612745,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Pacers",
@@ -92,7 +92,7 @@
     "color": "#FDB827",
     "logo": "/logos/IND.svg",
     "teamId": 1610612754,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Clippers",
@@ -100,7 +100,7 @@
     "color": "#C8102E",
     "logo": "/logos/LAC.svg",
     "teamId": 1610612746,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Lakers",
@@ -108,7 +108,7 @@
     "color": "#FDB827",
     "logo": "/logos/LAL.svg",
     "teamId": 1610612747,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Grizzlies",
@@ -116,7 +116,7 @@
     "color": "#5D76A9",
     "logo": "/logos/MEM.svg",
     "teamId": 1610612763,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Heat",
@@ -124,7 +124,7 @@
     "color": "#98002E",
     "logo": "/logos/MIA.svg",
     "teamId": 1610612748,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Bucks",
@@ -132,7 +132,7 @@
     "color": "#00471B",
     "logo": "/logos/MIL.svg",
     "teamId": 1610612749,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Timberwolves",
@@ -140,7 +140,7 @@
     "color": "#005083",
     "logo": "/logos/MIN.svg",
     "teamId": 1610612750,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Pelicans",
@@ -148,7 +148,7 @@
     "color": "#0C2340",
     "logo": "/logos/NOP.svg",
     "teamId": 1610612740,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Knicks",
@@ -156,7 +156,7 @@
     "color": "#006BB6",
     "logo": "/logos/NYK.svg",
     "teamId": 1610612752,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Thunder",
@@ -164,7 +164,7 @@
     "color": "#007DC3",
     "logo": "/logos/OKC.svg",
     "teamId": 1610612760,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Magic",
@@ -172,7 +172,7 @@
     "color": "#0077C9",
     "logo": "/logos/ORL.svg",
     "teamId": 1610612753,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "76ers",
@@ -180,7 +180,7 @@
     "color": "#006BB6",
     "logo": "/logos/PHI.svg",
     "teamId": 1610612755,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Suns",
@@ -188,7 +188,7 @@
     "color": "#E56020",
     "logo": "/logos/PHX.svg",
     "teamId": 1610612756,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Trail Blazers",
@@ -196,7 +196,7 @@
     "color": "#E03A3E",
     "logo": "/logos/POR.svg",
     "teamId": 1610612757,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Kings",
@@ -204,7 +204,7 @@
     "color": "#5A2D81",
     "logo": "/logos/SAC.svg",
     "teamId": 1610612758,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Spurs",
@@ -212,7 +212,7 @@
     "color": "#B6BFBF",
     "logo": "/logos/SAS.svg",
     "teamId": 1610612759,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Raptors",
@@ -220,7 +220,7 @@
     "color": "#CE1141",
     "logo": "/logos/TOR.svg",
     "teamId": 1610612761,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Jazz",
@@ -228,7 +228,7 @@
     "color": "#00471B",
     "logo": "/logos/UTH.svg",
     "teamId": 1610612762,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   },
   {
     "name": "Wizards",
@@ -236,6 +236,6 @@
     "color": "#E31837",
     "logo": "/logos/WSH.svg",
     "teamId": 1610612764,
-    "isWNBA": false
+    "sportKey": "basketball_nba"
   }
 ]
