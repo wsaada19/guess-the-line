@@ -7,9 +7,9 @@ import { getScoreFromGuess } from "@/services/gameLogic";
 import { useStore } from "@/store/guessTheLine";
 import FinalScorePopup from "./FinalScorePopup";
 import Header from "./Header";
-import LoadingSpinner from "./ui/Loading";
 import DaySelector from "./DaySelector";
 import { useMemo } from "react";
+import { matchesSelectedSport } from "@/lib/utils";
 
 export const GuessTheLine = ({ initialGames }) => {
   const {
@@ -45,7 +45,6 @@ export const GuessTheLine = ({ initialGames }) => {
 
   const [bannerOpacity, setBannerOpacity] = useState("0");
   const [bannerScore, setBannerScore] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const gamesMap = new Map();
@@ -123,11 +122,7 @@ export const GuessTheLine = ({ initialGames }) => {
   const filteredMatches = useMemo(() => {
     const matches = gamesByDate.get(selectedDate);
     if (!matches) return [];
-    return matches.filter((match) => {
-      if (!match) return false;
-      if (selectedSport === "both") return true;
-      return selectedSport === match.home?.sportKey || selectedSport === match.away?.sportKey;
-    });
+    return matches.filter((match) => matchesSelectedSport(match, selectedSport));
   }, [selectedSport, selectedDate, gamesByDate]);
 
   const remainingGuesses = filteredMatches.length - numberOfGuessesForMatches(filteredMatches.map(match => match.id));
@@ -162,7 +157,6 @@ export const GuessTheLine = ({ initialGames }) => {
       {filteredMatches.length > 0 ? (
         <>
           <FinalScorePopup matchesLength={filteredMatches.length} />
-          {!isLoading && (
             <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-x-6">
               {filteredMatches.map((match) => (
                 <Matchup
@@ -176,7 +170,6 @@ export const GuessTheLine = ({ initialGames }) => {
                 />
               ))}
             </div>
-          )}
         </>
       ) : (
         <div className="text-center py-12 bg-slate-800/50 rounded-lg mt-6">
@@ -186,7 +179,6 @@ export const GuessTheLine = ({ initialGames }) => {
         </div>
       )}
 
-      {isLoading && <LoadingSpinner />}
       <PointsBanner opacity={bannerOpacity} points={bannerScore} />
     </div>
   );

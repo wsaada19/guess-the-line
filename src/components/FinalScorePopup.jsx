@@ -35,7 +35,7 @@ export default function FinalScorePopup({ matchesLength }) {
     >
       <div className='p-4 relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md'>
         <div className='flex items-center justify-between p-2 border-b border-gray-400 rounded-t'>
-          <h3 className='font-semibold text-xl mb-1'>Game Complete</h3>
+          <h3 className='font-semibold text-xl mb-1'>Scorecard</h3>
           <button
             type='button'
             className='text-gray-500 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center'

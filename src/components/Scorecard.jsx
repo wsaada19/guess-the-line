@@ -14,11 +14,11 @@ export default function Scorecard({ remainingGuesses, score }) {
         {score} points
       </Badge>
       <Badge
-        className='items-center text-base border-none text-white'
+        className='items-center text-sm border-none text-white'
         variant='outline'
       >
         <PuzzleIcon className='h-4 w-4 ml-1 mr-1' />
-                {remainingGuesses} guess{remainingGuesses === 1 ? '' : 'es'}
+                {remainingGuesses} guess{remainingGuesses === 1 ? '' : 'es'} left
 
       </Badge>
     </div>

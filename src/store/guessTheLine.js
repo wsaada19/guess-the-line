@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import { getScoreFromGuess } from '@/services/gameLogic'
+import { matchesSelectedSport } from '@/lib/utils'
 
 const getTodayString = () => {
   const today = new Date()
@@ -16,10 +17,26 @@ const getTodayString = () => {
   return localToday.toISOString().split('T')[0]
 }
 
+// Only keep today's data
+const cleanupOldData = (guessesByDate, gamesByDate) => {
+  const today = getTodayString()
+  const cleanedGuesses = new Map()
+  const cleanedGames = new Map()
+  
+  if (guessesByDate.has(today)) {
+    cleanedGuesses.set(today, guessesByDate.get(today))
+  }
+  if (gamesByDate.has(today)) {
+    cleanedGames.set(today, gamesByDate.get(today))
+  }
+  
+  return { cleanedGuesses, cleanedGames }
+}
+
 const initialState = {
   guessesByDate: new Map(), // Map of date strings to guesses
   date: undefined,
-  selectedSport: 'both', // 'both', 'nba', or 'wnba'
+  selectedSport: 'wnba',
   gamesByDate: new Map(), // Map of date strings to games
   selectedDate: getTodayString(), // Default to today
   showFinalScorePopup: false
@@ -32,7 +49,10 @@ export const useStore = create(
       addGuess: (matchData) => {
         const state = get();
         const dateGuesses = state.guessesByDate.get(state.selectedDate) || [];
-        const newGuesses = [...dateGuesses, matchData];
+        const filteredGuesses = dateGuesses.filter((guess) => 
+          matchesSelectedSport(guess, state.selectedSport)
+        );
+        const newGuesses = [...filteredGuesses, matchData];
         
         set((state) => ({
           guessesByDate: new Map(state.guessesByDate).set(
@@ -44,12 +64,9 @@ export const useStore = create(
         // Check if game is complete after adding guess
         const updatedState = get();
         const currentGames = updatedState.gamesByDate.get(updatedState.selectedDate) || [];
-        const filteredGames = currentGames.filter((match) => {
-          if (!match) return false;
-          if (updatedState.selectedSport === "both") return true;
-          const isWNBA = match?.home?.isWNBA || match?.away?.isWNBA;
-          return updatedState.selectedSport === "wnba" ? isWNBA : !isWNBA;
-        });
+        const filteredGames = currentGames.filter((match) => 
+          matchesSelectedSport(match, updatedState.selectedSport)
+        );
         
         if (newGuesses.length === filteredGames.length && newGuesses.length > 0) {
           set({ showFinalScorePopup: true });
@@ -58,7 +75,9 @@ export const useStore = create(
       getScoreForDate: (dateString) => {
         const state = get();
         const dateGuesses = state.guessesByDate.get(dateString) || [];
-        return dateGuesses.reduce((total, guess) => {
+        return dateGuesses.filter((guess) => 
+          matchesSelectedSport(guess, state.selectedSport)
+        ).reduce((total, guess) => {
           return total + getScoreFromGuess(guess.guess, guess.actual);
         }, 0);
       },
@@ -73,12 +92,16 @@ export const useStore = create(
       },
       getGuessesForDate: (dateString) => {
         const state = get();
-        return state.guessesByDate.get(dateString) || [];
+        return state.guessesByDate.get(dateString)?.filter((guess) => 
+          matchesSelectedSport(guess, state.selectedSport)
+        ) || [];
       },
       getGuessesForMatches: (matchIds) => {
         const state = get();
         const dateGuesses = state.guessesByDate.get(state.selectedDate) || [];
-        return dateGuesses.filter(guess => matchIds.includes(guess.id));
+        return dateGuesses.filter((guess) => 
+          matchesSelectedSport(guess, state.selectedSport)
+        ).filter(guess => matchIds.includes(guess.id));
       },
       numberOfGuessesForMatches: (matchIds) => {
         const state = get();
@@ -108,7 +131,7 @@ export const useStore = create(
         });
       },
       reset: () => set(initialState),
-      showFinalScorePopup: () => set({ showFinalScorePopup: true }),
+      setShowFinalScorePopup: () => set({ showFinalScorePopup: true }),
       hideFinalScorePopup: () => set({ showFinalScorePopup: false })
     }),
     {
@@ -123,10 +146,17 @@ export const useStore = create(
         if (state) {
           state.gamesByDate = new Map(state.gamesByDate);
           state.guessesByDate = new Map(state.guessesByDate);
-          // Ensure selectedDate is set if it's undefined after rehydration
-          if (!state.selectedDate) {
-            state.selectedDate = getTodayString();
-          }
+          
+          // Clean up old data and reset to today
+          const { cleanedGuesses, cleanedGames } = cleanupOldData(
+            state.guessesByDate, 
+            state.gamesByDate
+          )
+          
+          state.guessesByDate = cleanedGuesses
+          state.gamesByDate = cleanedGames
+          state.selectedDate = getTodayString()
+          state.showFinalScorePopup = false
         }
       }
     }
