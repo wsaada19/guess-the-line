@@ -68,7 +68,7 @@ export default function FinalScorePopup({ matchesLength }) {
           })}
         </div>
         <p className='mt-3'>
-          You scored <span className='font-semibold'>{currentScore}</span> out of{' '}
+          <span className='font-semibold'>{currentScore}</span> out of{' '}
           <span className='font-semibold'>{matchesLength * 10}</span> possible
           points.
         </p>
